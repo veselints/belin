@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Belin</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./styles.css">
+    <style type="text/css">
+    html,
+    body,
+    div,
+    ul,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    li {
+        padding: 0;
+        margin: 0;
+    }
+    
+    body {
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        width: 100%;
+    }
+    
+    ul {
+        list-style: none;
+    }
+    
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    a:hover {
+        color: #888;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    
+    .header-container {
+        position: relative;
+        z-index: 100;
+        background-color: #FFF;
+    }
+    
+    .header {
+        width: 1280px;
+        margin: 0 auto;
+    }
+    
+    .name {
+        display: inline-block;
+        vertical-align: middle;
+        margin: auto 1em;
+        font-weight: 100;
+    }
+    
+    .navigation {
+        color: #444;
+        display: inline-block;
+    }
+    
+    .main-menu>li {
+        display: inline-block;
+    }
+    
+    .main-menu .main-link {
+        display: block;
+        padding: 1.5em 2em;
+    }
+    
+    .main-link .fa-caret-down,
+    .main-link .fa-caret-up {
+        margin-left: 0.5em;
+    }
+    
+    .main-menu .main-link:hover {
+        background-color: #EEE;
+    }
+    
+    .main-menu .main-link.selected {
+        background-color: #EEE;
+    }
+    
+    .menu-dropdown {
+        width: 100%;
+        height: 185px;
+        text-align: center;
+        background-color: #EEE;
+        position: absolute;
+        -webkit-transition-property: top;
+        -webkit-transition-duration: 2s;
+        transition-property: top;
+        transition-duration: 1.5s;
+        left: 0;
+        z-index: 1;
+        box-shadow: 0 0 20px 1px rgb(200, 200, 200);
+    }
+    
+    .menu-dropdown.hidden-dropdown {
+        top: -123px;
+    }
+    
+    .menu-dropdown.visible-dropdown {
+        top: 62px;
+    }
+    
+    .menu-dropdown-inner {
+        text-align: left;
+        width: 1280px;
+        margin: 0 auto;
+    }
+    
+    .menu-dropdown-column {
+        float: left;
+        width: 320px;
+        padding: 1em 0;
+    }
+    
+    .menu-dropdown-heading {
+        font-weight: 900;
+        font-size: 1.15em;
+        margin: 0.5em 0;
+    }
+    
+    .menu-dropdown-sublist li {
+        padding: 0.25em 0;
+    }
+    
+    .main {
+        position: relative;
+    }
+    /*Styling home page*/
+    
+    .home-image {
+        margin: 3em 0;
+        height: 75vh;
+        width: 100%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url("./images/Elephant-Watercolor-Painting.jpg");
+    }
+    /* styling footer */
+    
+    footer {
+        width: 97%;
+        margin: 0 1%;
+        position: fixed;
+        bottom: 0;
+    }
+    
+    footer .footer-text {
+        text-align: right;
+        padding: 15px;
+        margin: 0 1%;
+        border-top: 0.5px solid #DDD;
+        color: #DDD;
+        font-size: 0.8em;
+    }
+    </style>
+</head>
+
+<body ng-app="belinApp" ng-cloak>
+    <!-- header -->
+    <header class="header-container">
+        <div class="header">
+            <h1 class="name">Belin Mollov //</h1>
+            <nav class="navigation">
+                <ul class="main-menu">
+                    <li><a class="main-link" title="For me">За мен</a></li>
+                    <li>
+                        <a class="main-link" title="Professional">Професионален път<i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                    </li>
+                    <li><a class="main-link" title="Paintings">Картини</a></li>
+                    <li><a class="main-link" title="Photos">Снимки</a></li>
+                    <li><a class="main-link" title="CUrrent">Актуално</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="menu-dropdown hidden-dropdown">
+        <div class="menu-dropdown-inner">
+            <div class="menu-dropdown-column">
+                <h4 class="menu-dropdown-heading"><a href="" >Регионално и местно развитие</a></h4>
+                <ul class="menu-dropdown-sublist">
+                    <li><a href="">Архив (МРРБ 1991 – 2010 г.)</a></li>
+                    <li><a href="">Проекти</a></li>
+                    <li><a href="">Публикации</a></li>
+                    <li><a href="">Презентации</a></li>
+                </ul>
+            </div>
+            <div class="menu-dropdown-column">
+                <h4 class="menu-dropdown-heading"><a href="" >Пространствено планиране</a></h4>
+                <ul class="menu-dropdown-sublist">
+                    <li><a href="">Архив (Генплан София 1970 – 1990 г.)</a></li>
+                    <li><a href="">Проекти</a></li>
+                    <li><a href="">Публикации</a></li>
+                    <li><a href="">Презентации</a></li>
+                </ul>
+            </div>
+            <div class="menu-dropdown-column">
+                <h4 class="menu-dropdown-heading"><a href="" >Работа със заинтересовани страни</a></h4>
+                <ul class="menu-dropdown-sublist">
+                    <li><a href="">Обучения (магистърски програми)</a></li>
+                    <li><a href="">Обществени форуми</a></li>
+                    <li><a href="">Публикации</a></li>
+                    <li><a href="">Презентации</a></li>
+                </ul>
+            </div>
+            <div class="menu-dropdown-column">
+                <h4 class="menu-dropdown-heading"><a href="" >Градско възстановяване и развитие</a></h4>
+                <ul class="menu-dropdown-sublist">
+                    <li><a href="">Проекти (добри практики)</a></li>
+                    <li><a href="">Публикации</a></li>
+                    <li><a href="">Презентации</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Main content -->
+    <main class="main">
+        <div ng-view>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">
+            <a class="link" href="https://github.com/veselints" "Veselin Tsvetanov">&copy; veselints</a>
+        </p>
+    </footer>
+    <!-- Loding libs -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.js"></script>
+    <!-- Loading app -->
+    <script src="app.js"></script>
+    <!-- Loading controllers -->
+    <script src="controllers/home-controller.js"></script>
+    <script src="controllers/works-controller.js"></script>
+    <script src="controllers/search-controller.js"></script>
+    <!-- Loading services -->
+    <script src="services/works-service.js"></script>
+    <script src="services/data-service.js"></script>
+    <script type="text/javascript">
+    $('document').ready(function() {
+        $('.main-link').on('click', function(e) {
+            $('.visible-dropdown').removeClass('visible-dropdown').addClass('hidden-dropdown');
+            var link = $(e.target);
+            var downArrow = link.find('.fa');
+            var dropdown = $('.menu-dropdown');
+
+            if (link.hasClass('selected') && downArrow.length > 0) {
+                link.removeClass('selected');
+                downArrow.removeClass('fa-caret-up').addClass('fa-caret-down');
+                dropdown.removeClass('visible-dropdown');
+                dropdown.addClass('hidden-dropdown');
+            } else {
+                $('.selected').removeClass('selected');
+                link.addClass('selected');
+                $('.fa-caret-down').removeClass('fa-caret-up').addClass('fa-caret-down');
+                if (downArrow.length > 0) {
+                	downArrow.removeClass('fa-caret-down').addClass('fa-caret-up');
+                    dropdown.removeClass('hidden-dropdown');
+                    dropdown.addClass('visible-dropdown');
+                } else {
+                	$('.fa-caret-up').removeClass('fa-caret-up').addClass('fa-caret-down');
+                }
+            }
+        });
+    });
+    </script>
+</body>
+
+</html>
