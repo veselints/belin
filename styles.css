@@ -1,0 +1,163 @@
+html,
+body,
+div,
+ul,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: #999;
+    /*font-weight: 600;*/
+    cursor: pointer;
+}
+
+.header-container {
+    position: relative;
+    z-index: 100;
+    background-color: #FFF;
+}
+
+.header {
+    width: 1280px;
+    margin: 0 auto;
+}
+
+.name {
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto 1em;
+    font-weight: 100;
+}
+
+.navigation {
+    color: #333;
+    display: inline-block;
+}
+
+.main-menu>li {
+    display: inline-block;
+}
+
+.main-menu .main-link {
+    display: block;
+    padding: 1.5em 2em;
+}
+
+.main-menu .main-link:hover {
+    background-color: #EEE;
+}
+
+.main-menu .main-link.selected {
+    background-color: #EEE;
+}
+
+.main-link .fa-caret-down,
+.main-link .fa-caret-up {
+    margin-left: 0.5em;
+}
+
+.menu-dropdown {
+    width: 100%;
+    height: 185px;
+    text-align: center;
+    background-color: #EEE;
+    position: absolute;
+    -webkit-transition-property: top;
+    -webkit-transition-duration: 2s;
+    transition-property: top;
+    transition-duration: 1.5s;
+    left: 0;
+    z-index: 1;
+    box-shadow: 0 0 20px 1px rgb(200, 200, 200);
+}
+
+.menu-dropdown.hidden-dropdown {
+    top: -130px;
+}
+
+.menu-dropdown.visible-dropdown {
+    top: 59px;
+}
+
+.menu-dropdown-inner {
+    text-align: left;
+    width: 1240px;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+.menu-dropdown-column {
+    float: left;
+    width: 280px;
+    padding: 0.5em 15px;
+}
+
+.menu-dropdown-heading {
+    font-weight: 900;
+    font-size: 1.1em;
+    margin: 0.8em 0;
+}
+
+.menu-dropdown-sublist li {
+    padding: 0.25em 0;
+}
+
+.main {
+    position: relative;
+}
+
+
+/*Styling home page*/
+
+.home-image {
+    margin: 3em 0;
+    height: 75vh;
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("./images/Elephant-Watercolor-Painting.jpg");
+}
+
+
+/* styling footer */
+
+footer {
+    width: 97%;
+    margin: 0 1%;
+    position: fixed;
+    bottom: 0;
+}
+
+footer .footer-text {
+    text-align: right;
+    padding: 15px;
+    margin: 0 1%;
+    border-top: 0.5px solid #DDD;
+    color: #DDD;
+    font-size: 0.8em;
+}
