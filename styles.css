@@ -35,6 +35,15 @@ a:hover {
     cursor: pointer;
 }
 
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
 .header-container {
     position: relative;
     z-index: 100;
@@ -97,10 +106,12 @@ a:hover {
 
 .menu-dropdown.hidden-dropdown {
     top: -130px;
+    z-index: 1;
 }
 
 .menu-dropdown.visible-dropdown {
     top: 59px;
+    z-index: 2;
 }
 
 .menu-dropdown-inner {
@@ -112,14 +123,24 @@ a:hover {
 
 .menu-dropdown-column {
     float: left;
-    width: 280px;
     padding: 0.5em 15px;
+    width: 280px;
 }
 
+// .projects-dropdown .menu-dropdown-column {
+//     width: 280px;
+// }
+// .photos-dropdown .menu-dropdown-column {
+//     width: 370px;
+// }
 .menu-dropdown-heading {
     font-weight: 900;
     font-size: 1.1em;
     margin: 0.8em 0;
+}
+
+.menu-dropdown-sublist.list-without-heading {
+    margin-top: 44px;
 }
 
 .menu-dropdown-sublist li {

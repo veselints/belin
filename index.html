@@ -18,12 +18,12 @@
             <h1 class="name"><a href="./#/" >Belin Mollov //</a></h1>
             <nav class="navigation">
                 <ul class="main-menu">
-                    <li><a class="main-link" title="For me">За мен</a></li><li><a class="main-link" title="Professional">Професионален път<i class="fa fa-caret-down" aria-hidden="true"></i></a></li><li><a class="main-link" title="Paintings">Картини</a></li><li><a class="main-link" title="Photos">Снимки</a></li><li><a class="main-link" title="CUrrent">Актуално</a></li>
+                    <li><a class="main-link" title="For me">За мен</a></li><li><a class="main-link" title="professional">Професионален път<i class="fa fa-caret-down" aria-hidden="true"></i></a></li><li><a class="main-link" title="paintings">Картини<i class="fa fa-caret-down" aria-hidden="true"></i></a></li><li><a class="main-link photos" title="photos">Снимки<i class="fa fa-caret-down" aria-hidden="true"></i></a></li><li><a class="main-link" title="CUrrent">Актуално</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    <div class="menu-dropdown hidden-dropdown">
+    <div class="menu-dropdown hidden-dropdown professional">
         <div class="menu-dropdown-inner">
             <div class="menu-dropdown-column">
                 <h4 class="menu-dropdown-heading"><a href="" >Регионално и местно развитие</a></h4>
@@ -56,9 +56,57 @@
                 <h4 class="menu-dropdown-heading"><a href="" >Градско възстановяване и развитие</a></h4>
                 <ul class="menu-dropdown-sublist">
                     <li><a href="">Проекти (добри практики)</a></li>
+                    <li><a href="">Регенерация</a></li>
                     <li><a href="">Публикации</a></li>
                     <li><a href="">Презентации</a></li>
                 </ul>
+            </div>
+        </div>
+    </div>
+    <div class="menu-dropdown hidden-dropdown paintings">
+        <div class="menu-dropdown-inner">
+            <div class="menu-dropdown-column">
+                <h4 class="menu-dropdown-heading"><a href="" >Акварели</a></h4>
+            </div>
+            <div class="menu-dropdown-column">
+          	  <h4 class="menu-dropdown-heading"><a href="" >Маслени бои</a></h4>
+            </div>
+            <div class="menu-dropdown-column">
+                <h4 class="menu-dropdown-heading"><a href="" >Графика</a></h4>
+            </div>
+            <div class="menu-dropdown-column">
+                <h4 class="menu-dropdown-heading"><a href="" >Рисунки</a></h4>
+            </div>
+        </div>
+    </div>
+    <div class="menu-dropdown hidden-dropdown photos">
+        <div class="menu-dropdown-inner">
+            <div class="menu-dropdown-column">
+                <h4 class="menu-dropdown-heading"><a href="" >От България</a></h4>
+                <ul class="menu-dropdown-sublist">
+                    <li><a href="">Край Дунав</a></li>
+                    <li><a href="">Черно море</a></li>
+                    <li><a href="">Тракия</a></li>
+                </ul>
+            </div>
+            <div class="menu-dropdown-column">
+                <ul class="menu-dropdown-sublist list-without-heading">
+                    <li><a href="">Балканът</a></li>
+                    <li><a href="">Рила, Родопи, Пирин</a></li>
+                    <li><a href="">Югозападна България</a></li>
+                </ul>
+            </div>
+            <div class="menu-dropdown-column">
+                <h4 class="menu-dropdown-heading"><a href="" >Извън България</a></h4>
+                <ul class="menu-dropdown-sublist">
+                    <li><a href="">Европа</a></li>
+                    <li><a href="">Азия</a></li>
+                    <li><a href="">Америка</a></li>
+                    <li><a href="">Африка</a></li>
+                </ul>
+            </div>
+            <div class="menu-dropdown-column">
+                <h4 class="menu-dropdown-heading"><a href="" >Колажи</a></h4>
             </div>
         </div>
     </div>
@@ -91,26 +139,25 @@
     $('document').ready(function() {
         $('.main-link').on('click', function(e) {
             $('.visible-dropdown').removeClass('visible-dropdown').addClass('hidden-dropdown');
+            $('.fa-caret-up').removeClass('fa-caret-up').addClass('fa-caret-down');
+
             var link = $(e.target);
             var downArrow = link.find('.fa');
-            var dropdown = $('.menu-dropdown');
+            var dropdownName = link.attr('title');
+            var respondingDropdown = $('.' + dropdownName);
 
-            if (link.hasClass('selected') && downArrow.length > 0) {
-                link.removeClass('selected');
-                downArrow.removeClass('fa-caret-up').addClass('fa-caret-down');
-                dropdown.removeClass('visible-dropdown');
-                dropdown.addClass('hidden-dropdown');
+            if (link.hasClass('selected')) {
+            	if (respondingDropdown.length > 0) {
+            		link.removeClass('selected');
+            	}
             } else {
-                $('.selected').removeClass('selected');
-                link.addClass('selected');
-                $('.fa-caret-down').removeClass('fa-caret-up').addClass('fa-caret-down');
-                if (downArrow.length > 0) {
-                	downArrow.removeClass('fa-caret-down').addClass('fa-caret-up');
-                    dropdown.removeClass('hidden-dropdown');
-                    dropdown.addClass('visible-dropdown');
-                } else {
-                	$('.fa-caret-up').removeClass('fa-caret-up').addClass('fa-caret-down');
-                }
+            	$('.selected').removeClass('selected');
+            	link.addClass('selected');
+
+            	if (respondingDropdown.length > 0) {
+            		respondingDropdown.removeClass('hidden-dropdown').addClass('visible-dropdown');
+            		downArrow.removeClass('fa-caret-down').addClass('fa-caret-up');
+            	}
             }
         });
     });
