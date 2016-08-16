@@ -147,6 +147,11 @@ a:hover {
     padding: 0.25em 0;
 }
 
+.big-icon {
+    font-size: 3em;
+    padding: 25px 15px;
+}
+
 .main {
     position: relative;
 }
