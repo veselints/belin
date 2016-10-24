@@ -187,3 +187,142 @@ footer .footer-text {
     color: #DDD;
     font-size: 0.8em;
 }
+
+
+.artist-container {
+    width: 1280px;
+    margin: 2em auto;
+}
+
+.artist-image {
+    display: inline-block;
+    float: left;
+    height: 240px;
+    width: 240px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("https://scontent.fsof3-1.fna.fbcdn.net/v/t1.0-9/11129195_1408263709494347_7438884886448841631_n.jpg?oh=4e87bd828617ee4f63ff0ad329aaad03&oe=58A76F20");
+    margin: 0 1em 1em;
+}
+
+.artist-text {
+    margin: 1em;
+}
+
+.artist-container .artist-list,
+.artist-container .artist-text {
+    line-height: 1.5em;
+}
+
+.artist-container .artist-list li {
+    padding: 1em 2em 0;
+}
+
+.artist-container h4 {
+    margin: 2em 1em 0;
+}
+
+
+.archive-container {
+    width: 1280px;
+    margin: 2em auto;
+}
+
+.file-icon {
+    display: inline-block;
+    float: left;
+    height: 40px;
+    width: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("https://cdn2.iconfinder.com/data/icons/adobe-acrobat-pdf/154/adobe-acrobat-pdf-file-document-128.png");
+    margin: 0 0.5em 0 0;
+}
+
+.file-icon:hover {
+    opacity: 0.7;
+}
+
+.project-from-archive {
+    margin: 0 0.5em;
+}
+
+.project-from-archive h4 {
+    margin: 3em 0 1em;
+}
+
+h2 {
+    margin: 0 0 2em 0.5em;
+}
+
+
+.projects-container {
+    width: 1280px;
+    margin: 2em auto;
+}
+
+.project-thumb {
+    display: inline-block;
+    height: 305px;
+    width: 305px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("http://veldergroup.com/thumb/phpThumb.php?src=../files/data_0/430/Image/pLdS-OUP-POPOVO.png&w=600&h=450");
+    margin: 0.5em;
+    position: relative;
+}
+
+.project-thumb h4 {
+    padding: 2em;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #DDD;
+    position: absolute;
+    bottom: 0;
+}
+
+.project-from-projects {
+    float: left;
+}
+
+.project {
+    width: 1280px;
+    margin: 2em auto;
+}
+
+.project p,
+.project h4 {
+    margin: 0 auto 1em;
+    line-height: 1.5em;
+}
+
+.project h4 {
+    margin: 2em auto 1em;
+}
+
+.document {
+    margin: 1.5em 0;
+}
+
+.source {
+    margin-bottom: 1em;
+}
+
+
+.ppt-icon {
+    display: inline-block;
+    float: left;
+    height: 40px;
+    width: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("http://www.file-extensions.org/imgs/app-icon/128/835/microsoft-powerpoint.png");
+    margin: 0 1em 0 0;
+}
+
+.ppt-icon:hover {
+    opacity: 0.7;
+}

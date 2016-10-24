@@ -18,7 +18,11 @@
             <h1 class="name"><a href="./#/" >Belin Mollov //</a></h1>
             <nav class="navigation">
                 <ul class="main-menu">
-                    <li><a class="main-link" title="For me">За мен</a></li><li><a class="main-link" title="professional">Професионален път<i class="fa fa-caret-down" aria-hidden="true"></i></a></li><li><a class="main-link" title="paintings">Картини<i class="fa fa-caret-down" aria-hidden="true"></i></a></li><li><a class="main-link photos" title="photos">Снимки<i class="fa fa-caret-down" aria-hidden="true"></i></a></li><li><a class="main-link" title="CUrrent">Актуално</a></li>
+                    <li><a class="main-link" title="For me" href="#/about">За мен</a></li>
+                    <li><a class="main-link" title="professional">Професионален път<i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
+                    <li><a class="main-link" title="paintings">Картини<i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
+                    <li><a class="main-link photos" title="photos">Снимки<i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
+                    <li><a class="main-link" title="CUrrent">Актуално</a></li>
                 </ul>
             </nav>
         </div>
@@ -26,12 +30,12 @@
     <div class="menu-dropdown hidden-dropdown professional">
         <div class="menu-dropdown-inner">
             <div class="menu-dropdown-column">
-                <h4 class="menu-dropdown-heading"><a href="" >Регионално и местно развитие</a></h4>
+                <h4 class="menu-dropdown-heading"><a href="#/regional" >Регионално и местно развитие</a></h4>
                 <ul class="menu-dropdown-sublist">
-                    <li><a href="">Архив (МРРБ 1991 – 2010 г.)</a></li>
-                    <li><a href="">Проекти</a></li>
-                    <li><a href="">Публикации</a></li>
-                    <li><a href="">Презентации</a></li>
+                    <li><a href="#/regional/archive">Архив (МРРБ 1991 – 2010 г.)</a></li>
+                    <li><a href="#/regional/projects">Проекти</a></li>
+                    <li><a href="#/regional/publications">Публикации</a></li>
+                    <li><a href="#/regional/presentations">Презентации</a></li>
                 </ul>
             </div>
             <div class="menu-dropdown-column">
@@ -67,30 +71,30 @@
         <div class="menu-dropdown-inner">
             <div class="menu-dropdown-column">
                 <h4 class="menu-dropdown-heading"><a href="" >
-                	Акварели
-                	<br/>
-                	<i class="fa fa-paint-brush big-icon" aria-hidden="true"></i>
-                </a></h4>
-            </div>
-            <div class="menu-dropdown-column">
-          	  <h4 class="menu-dropdown-heading"><a href="" >
-          	  	Маслени бои
-               	<br/>
-          	  	<i class="fa fa-tint big-icon" aria-hidden="true"></i>
-          	  </a></h4>
-            </div>
-            <div class="menu-dropdown-column">
-                <h4 class="menu-dropdown-heading"><a href="" >
-                	Графика
-	               	<br/>
-                	<i class="fa fa-pencil big-icon" aria-hidden="true"></i>
+                    Акварели
+                    <br/>
+                    <i class="fa fa-paint-brush big-icon" aria-hidden="true"></i>
                 </a></h4>
             </div>
             <div class="menu-dropdown-column">
                 <h4 class="menu-dropdown-heading"><a href="" >
-                	Рисунки
-                	<br/>
-                	<i class="fa fa-eraser big-icon" aria-hidden="true"></i>
+                Маслени бои
+                <br/>
+                <i class="fa fa-tint big-icon" aria-hidden="true"></i>
+              </a></h4>
+            </div>
+            <div class="menu-dropdown-column">
+                <h4 class="menu-dropdown-heading"><a href="" >
+                    Графика
+                    <br/>
+                    <i class="fa fa-pencil big-icon" aria-hidden="true"></i>
+                </a></h4>
+            </div>
+            <div class="menu-dropdown-column">
+                <h4 class="menu-dropdown-heading"><a href="" >
+                    Рисунки
+                    <br/>
+                    <i class="fa fa-eraser big-icon" aria-hidden="true"></i>
                 </a></h4>
             </div>
         </div>
@@ -146,11 +150,11 @@
     <script src="app.js"></script>
     <!-- Loading controllers -->
     <script src="controllers/home-controller.js"></script>
-    <script src="controllers/works-controller.js"></script>
-    <script src="controllers/search-controller.js"></script>
+    <script src="controllers/about-controller.js"></script>
+    <!-- <script src="controllers/search-controller.js"></script> -->
     <!-- Loading services -->
-    <script src="services/works-service.js"></script>
-    <script src="services/data-service.js"></script>
+    <!-- <script src="services/works-service.js"></script> -->
+    <!-- <script src="services/data-service.js"></script> -->
     <script type="text/javascript">
     $('document').ready(function() {
         $('.main-link').on('click', function(e) {
@@ -163,17 +167,17 @@
             var respondingDropdown = $('.' + dropdownName);
 
             if (link.hasClass('selected')) {
-            	if (respondingDropdown.length > 0) {
-            		link.removeClass('selected');
-            	}
+                if (respondingDropdown.length > 0) {
+                    link.removeClass('selected');
+                }
             } else {
-            	$('.selected').removeClass('selected');
-            	link.addClass('selected');
+                $('.selected').removeClass('selected');
+                link.addClass('selected');
 
-            	if (respondingDropdown.length > 0) {
-            		respondingDropdown.removeClass('hidden-dropdown').addClass('visible-dropdown');
-            		downArrow.removeClass('fa-caret-down').addClass('fa-caret-up');
-            	}
+                if (respondingDropdown.length > 0) {
+                    respondingDropdown.removeClass('hidden-dropdown').addClass('visible-dropdown');
+                    downArrow.removeClass('fa-caret-down').addClass('fa-caret-up');
+                }
             }
         });
     });
