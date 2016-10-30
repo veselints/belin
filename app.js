@@ -16,34 +16,49 @@
         controller: 'AboutController',
         controllerAs: CONTROLLER_AS_VM
       })
-      .when('/regional/archive', {
-        templateUrl: PARTIALS_PREFIX + 'regional-archive.html',
-        controller: 'AboutController',
+      .when('/community-building/trainings', {
+        templateUrl: PARTIALS_PREFIX + 'trainings.html',
+        controller: 'TrainingsController',
         controllerAs: CONTROLLER_AS_VM
       })
-      .when('/regional/projects/velingrad', {
+      .when('/community-building/forums', {
+        templateUrl: PARTIALS_PREFIX + 'forums.html',
+        controller: 'ForumsController',
+        controllerAs: CONTROLLER_AS_VM
+      })
+      .when('/regeneration/regeneration', {
+        templateUrl: PARTIALS_PREFIX + 'regeneration.html',
+        controller: 'RegenerationController',
+        controllerAs: CONTROLLER_AS_VM
+      })
+      .when('/:section/archive', {
+        templateUrl: PARTIALS_PREFIX + 'archive.html',
+        controller: 'ArchiveController',
+        controllerAs: CONTROLLER_AS_VM
+      })
+      .when('/:section/projects/:project', {
         templateUrl: PARTIALS_PREFIX + 'project.html',
-        controller: 'AboutController',
+        controller: 'ProjectDetailsController',
         controllerAs: CONTROLLER_AS_VM
       })
-      .when('/regional/projects', {
-        templateUrl: PARTIALS_PREFIX + 'regional-projects.html',
-        controller: 'AboutController',
+      .when('/:section/projects', {
+        templateUrl: PARTIALS_PREFIX + 'projects.html',
+        controller: 'ProjectsController',
         controllerAs: CONTROLLER_AS_VM
       })
-      .when('/regional/publications', {
-        templateUrl: PARTIALS_PREFIX + 'regional-publications.html',
-        controller: 'AboutController',
+      .when('/:section/publications', {
+        templateUrl: PARTIALS_PREFIX + 'publications.html',
+        controller: 'PublictionsController',
         controllerAs: CONTROLLER_AS_VM
       })
-      .when('/regional/presentations', {
-        templateUrl: PARTIALS_PREFIX + 'regional-presentations.html',
-        controller: 'AboutController',
+      .when('/:section/presentations', {
+        templateUrl: PARTIALS_PREFIX + 'presentations.html',
+        controller: 'PresentationsController',
         controllerAs: CONTROLLER_AS_VM
       })
       .when('/regional', {
         templateUrl: PARTIALS_PREFIX + 'regional.html',
-        controller: 'AboutController',
+        controller: 'RegionalController',
         controllerAs: CONTROLLER_AS_VM
       })
       .otherwise({

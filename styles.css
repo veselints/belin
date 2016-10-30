@@ -1,3 +1,5 @@
+/* Overwrite browser styles */
+
 html,
 body,
 div,
@@ -31,10 +33,15 @@ a {
 
 a:hover {
     color: #999;
-    /*font-weight: 600;*/
     cursor: pointer;
 }
 
+h2 {
+    margin: 0 0 2em 0.5em;
+}
+
+
+/* Clearfix */
 .clearfix:after {
     visibility: hidden;
     display: block;
@@ -44,6 +51,7 @@ a:hover {
     height: 0;
 }
 
+/* Styling header */
 .header-container {
     position: relative;
     z-index: 100;
@@ -62,6 +70,7 @@ a:hover {
     font-weight: 100;
 }
 
+/* Styling main-menu */
 .navigation {
     color: #333;
     display: inline-block;
@@ -89,6 +98,7 @@ a:hover {
     margin-left: 0.5em;
 }
 
+/* Styling drop-down menu */
 .menu-dropdown {
     width: 100%;
     height: 185px;
@@ -104,9 +114,17 @@ a:hover {
     box-shadow: 0 0 20px 1px rgb(200, 200, 200);
 }
 
+.menu-dropdown.menu-dropdown-small {
+    height: 65px;
+}
+
 .menu-dropdown.hidden-dropdown {
     top: -130px;
     z-index: 1;
+}
+
+.menu-dropdown.hidden-dropdown.menu-dropdown-small {
+    top: -10px;
 }
 
 .menu-dropdown.visible-dropdown {
@@ -127,12 +145,6 @@ a:hover {
     width: 280px;
 }
 
-// .projects-dropdown .menu-dropdown-column {
-//     width: 280px;
-// }
-// .photos-dropdown .menu-dropdown-column {
-//     width: 370px;
-// }
 .menu-dropdown-heading {
     font-weight: 900;
     font-size: 1.1em;
@@ -148,30 +160,11 @@ a:hover {
 }
 
 .big-icon {
-    font-size: 3em;
-    padding: 25px 15px;
+    font-size: 1em;
+    padding-right: 5px;
 }
-
-.main {
-    position: relative;
-}
-
-
-/*Styling home page*/
-
-.home-image {
-    margin: 3em 0;
-    height: 75vh;
-    width: 100%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url("./images/Elephant-Watercolor-Painting.jpg");
-}
-
 
 /* styling footer */
-
 footer {
     width: 97%;
     margin: 0 1%;
@@ -188,48 +181,13 @@ footer .footer-text {
     font-size: 0.8em;
 }
 
-
-.artist-container {
-    width: 1280px;
-    margin: 2em auto;
+/* Styling main content */
+.main {
+    position: relative;
 }
 
-.artist-image {
-    display: inline-block;
-    float: left;
-    height: 240px;
-    width: 240px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url("https://scontent.fsof3-1.fna.fbcdn.net/v/t1.0-9/11129195_1408263709494347_7438884886448841631_n.jpg?oh=4e87bd828617ee4f63ff0ad329aaad03&oe=58A76F20");
-    margin: 0 1em 1em;
-}
-
-.artist-text {
-    margin: 1em;
-}
-
-.artist-container .artist-list,
-.artist-container .artist-text {
-    line-height: 1.5em;
-}
-
-.artist-container .artist-list li {
-    padding: 1em 2em 0;
-}
-
-.artist-container h4 {
-    margin: 2em 1em 0;
-}
-
-
-.archive-container {
-    width: 1280px;
-    margin: 2em auto;
-}
-
-.file-icon {
+/* Styling icons */
+.file-icon, .ppt-icon {
     display: inline-block;
     float: left;
     height: 40px;
@@ -241,8 +199,84 @@ footer .footer-text {
     margin: 0 0.5em 0 0;
 }
 
-.file-icon:hover {
+.file-icon:hover, .ppt-icon:hover {
     opacity: 0.7;
+}
+
+.file-icon {
+    background-image: url("https://cdn2.iconfinder.com/data/icons/adobe-acrobat-pdf/154/adobe-acrobat-pdf-file-document-128.png");
+    margin: 0 0.5em 0 0;
+}
+
+.ppt-icon {
+    background-image: url("http://www.file-extensions.org/imgs/app-icon/128/835/microsoft-powerpoint.png");
+    margin: 0 1em 0 0;
+}
+
+/*Styling home page*/
+.home-image {
+    margin: 3em 0;
+    height: 75vh;
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("./images/Elephant-Watercolor-Painting.jpg");
+}
+
+/* Styling About page */
+.about-container {
+    width: 1280px;
+    margin: 2em auto;
+}
+
+.about-image {
+    display: inline-block;
+    float: left;
+    height: 240px;
+    width: 240px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("https://scontent.fsof3-1.fna.fbcdn.net/v/t1.0-9/11129195_1408263709494347_7438884886448841631_n.jpg?oh=4e87bd828617ee4f63ff0ad329aaad03&oe=58A76F20");
+    margin: 0 1em 1em;
+}
+
+.about-text {
+    margin: 1em;
+}
+
+.about-container .about-list,
+.about-container .about-text {
+    line-height: 1.5em;
+}
+
+.about-container .about-list li {
+    padding: 1em 2em 0;
+}
+
+.about-container h4 {
+    margin: 2em 1em 0;
+}
+
+/* Styling major section page */
+.major-section-container {
+    width: 1280px;
+    margin: 2em auto;
+}
+
+.section-from {
+    margin: 0 0.5em;
+}
+
+.section-from p {
+    margin-top: 1em;
+}
+
+/* Styling Archive page */
+.archive-container {
+    width: 1280px;
+    margin: 2em auto;
 }
 
 .project-from-archive {
@@ -253,11 +287,7 @@ footer .footer-text {
     margin: 3em 0 1em;
 }
 
-h2 {
-    margin: 0 0 2em 0.5em;
-}
-
-
+/* Styling Projects page */
 .projects-container {
     width: 1280px;
     margin: 2em auto;
@@ -308,21 +338,4 @@ h2 {
 
 .source {
     margin-bottom: 1em;
-}
-
-
-.ppt-icon {
-    display: inline-block;
-    float: left;
-    height: 40px;
-    width: 40px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url("http://www.file-extensions.org/imgs/app-icon/128/835/microsoft-powerpoint.png");
-    margin: 0 1em 0 0;
-}
-
-.ppt-icon:hover {
-    opacity: 0.7;
 }

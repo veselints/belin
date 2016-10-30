@@ -41,60 +41,60 @@
             <div class="menu-dropdown-column">
                 <h4 class="menu-dropdown-heading"><a href="" >Пространствено планиране</a></h4>
                 <ul class="menu-dropdown-sublist">
-                    <li><a href="">Архив (Генплан София 1970 – 1990 г.)</a></li>
-                    <li><a href="">Проекти</a></li>
-                    <li><a href="">Публикации</a></li>
-                    <li><a href="">Презентации</a></li>
+                    <li><a href="#/planning/archive">Архив (Генплан София 1970 – 1990 г.)</a></li>
+                    <li><a href="#/planning/projects">Проекти</a></li>
+                    <li><a href="#/planning/publications">Публикации</a></li>
+                    <li><a href="#/planning/presentations">Презентации</a></li>
                 </ul>
             </div>
             <div class="menu-dropdown-column">
                 <h4 class="menu-dropdown-heading"><a href="" >Работа със заинтересовани страни</a></h4>
                 <ul class="menu-dropdown-sublist">
-                    <li><a href="">Обучения (магистърски програми)</a></li>
-                    <li><a href="">Обществени форуми</a></li>
-                    <li><a href="">Публикации</a></li>
-                    <li><a href="">Презентации</a></li>
+                    <li><a href="#/community/trainings">Обучения (магистърски програми)</a></li>
+                    <li><a href="#/community/forums">Обществени форуми</a></li>
+                    <li><a href="#/community/publications">Публикации</a></li>
+                    <li><a href="#/community/presentations">Презентации</a></li>
                 </ul>
             </div>
             <div class="menu-dropdown-column">
                 <h4 class="menu-dropdown-heading"><a href="" >Градско възстановяване и развитие</a></h4>
                 <ul class="menu-dropdown-sublist">
-                    <li><a href="">Проекти (добри практики)</a></li>
-                    <li><a href="">Регенерация</a></li>
-                    <li><a href="">Публикации</a></li>
-                    <li><a href="">Презентации</a></li>
+                    <li><a href="#/regeneration/projects">Проекти (добри практики)</a></li>
+                    <li><a href="#/regeneration/regeneration">Регенерация</a></li>
+                    <li><a href="#/regeneration/publications">Публикации</a></li>
+                    <li><a href="#/regeneration/presentations">Презентации</a></li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="menu-dropdown hidden-dropdown paintings">
+    <div class="menu-dropdown hidden-dropdown paintings menu-dropdown-small">
         <div class="menu-dropdown-inner">
             <div class="menu-dropdown-column">
                 <h4 class="menu-dropdown-heading"><a href="" >
-                    Акварели
-                    <br/>
                     <i class="fa fa-paint-brush big-icon" aria-hidden="true"></i>
+                    Акварели
+                    <!-- <br/> -->
                 </a></h4>
             </div>
             <div class="menu-dropdown-column">
                 <h4 class="menu-dropdown-heading"><a href="" >
-                Маслени бои
-                <br/>
                 <i class="fa fa-tint big-icon" aria-hidden="true"></i>
+                Маслени бои
+                <!-- <br/> -->
               </a></h4>
             </div>
             <div class="menu-dropdown-column">
                 <h4 class="menu-dropdown-heading"><a href="" >
-                    Графика
-                    <br/>
                     <i class="fa fa-pencil big-icon" aria-hidden="true"></i>
+                    Графика
+                    <!-- <br/> -->
                 </a></h4>
             </div>
             <div class="menu-dropdown-column">
                 <h4 class="menu-dropdown-heading"><a href="" >
-                    Рисунки
-                    <br/>
                     <i class="fa fa-eraser big-icon" aria-hidden="true"></i>
+                    Рисунки
+                    <!-- <br/> -->
                 </a></h4>
             </div>
         </div>
@@ -110,7 +110,8 @@
                 </ul>
             </div>
             <div class="menu-dropdown-column">
-                <ul class="menu-dropdown-sublist list-without-heading">
+                <h4 class="menu-dropdown-heading"><a href="" >От България</a></h4>
+                <ul class="menu-dropdown-sublist">
                     <li><a href="">Балканът</a></li>
                     <li><a href="">Рила, Родопи, Пирин</a></li>
                     <li><a href="">Югозападна България</a></li>
@@ -151,6 +152,12 @@
     <!-- Loading controllers -->
     <script src="controllers/home-controller.js"></script>
     <script src="controllers/about-controller.js"></script>
+    <script src="controllers/presentations-controller.js"></script>
+    <script src="controllers/publications-controller.js"></script>
+    <script src="controllers/archive-controller.js"></script>
+    <script src="controllers/projects-controller.js"></script>
+    <script src="controllers/regional-controller.js"></script>
+    <script src="controllers/project-details-controller.js"></script>
     <!-- <script src="controllers/search-controller.js"></script> -->
     <!-- Loading services -->
     <!-- <script src="services/works-service.js"></script> -->
@@ -179,6 +186,12 @@
                     downArrow.removeClass('fa-caret-down').addClass('fa-caret-up');
                 }
             }
+        });
+
+        $('.menu-dropdown-column a').on('click', function(e) {
+            $('.visible-dropdown').removeClass('visible-dropdown').addClass('hidden-dropdown');
+            $('.fa-caret-up').removeClass('fa-caret-up').addClass('fa-caret-down');
+            $('.selected').removeClass('selected');
         });
     });
     </script>
