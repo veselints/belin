@@ -6,19 +6,19 @@
     var CONTROLLER_AS_VM = 'vm';
 
     $routeProvider
+      // Major navigation
       .when('/', {
         templateUrl: PARTIALS_PREFIX + 'home.html',
         controller: 'HomeController',
         controllerAs: CONTROLLER_AS_VM
       })
-
       .when('/about', {
         templateUrl: PARTIALS_PREFIX + 'about.html',
         controller: 'AboutController',
         controllerAs: CONTROLLER_AS_VM
       })
 
-
+      // Professional path navigation
       .when('/community/trainings', {
         templateUrl: PARTIALS_PREFIX + 'trainings.html',
         controller: 'TrainingsController',
@@ -74,7 +74,19 @@
       })
 
 
+      // Photos navigation
+      .when('/photos/:section', {
+        templateUrl: PARTIALS_PREFIX + 'photos.html',
+        controller: 'PhotosController',
+        controllerAs: CONTROLLER_AS_VM
+      })
 
+
+      // Paintings navigation
+
+
+
+      // Otherwise
       .otherwise({
         redirectTo: '/'
       });

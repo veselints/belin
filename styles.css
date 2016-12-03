@@ -16,6 +16,10 @@ li {
     margin: 0;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
@@ -39,7 +43,6 @@ a:hover {
 h2 {
     margin: 0 0 2em 0.5em;
 }
-
 
 /* Clearfix */
 .clearfix:after {
@@ -165,20 +168,33 @@ h2 {
 }
 
 /* styling footer */
-footer {
+.footer {
     width: 97%;
     margin: 0 1%;
-    position: fixed;
-    bottom: 0;
 }
 
-footer .footer-text {
+.footer .footer-text {
     text-align: right;
     padding: 15px;
     margin: 0 1%;
     border-top: 0.5px solid #DDD;
     color: #DDD;
     font-size: 0.8em;
+}
+
+.page-wrap {
+  min-height: 100%;
+  margin-bottom: -45px; 
+}
+
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+
+.footer, 
+.page-wrap:after {
+  height: 45px; 
 }
 
 /* Styling main content */
@@ -347,4 +363,51 @@ footer .footer-text {
     font-size: 0.9em;
     margin-top: 1em;
     color: #666;
+}
+
+/* Styling Photos page */
+.no-photos-message {
+    font-size: 32px;
+    padding-top: 115px;
+}
+
+.main .container {
+    text-align: center;
+    width: 1280px;
+    margin: 30px auto;
+    min-height: 500px;
+}
+
+.main .container .inner-photo-container {
+    padding: 20px;
+    margin: 12px;
+    /* background-color: #EEE; */
+    float: left;
+    cursor: pointer;
+    border: 1px solid #DDD;
+}
+
+.main .container .photo-image {
+    height: 253px;
+    width: 253px;
+}
+
+.main .container .photo-image img {
+  height: auto;
+  width: auto;
+  max-height: 251px;
+  max-width: 251px;
+  margin: auto;
+  display: block;
+
+.main .container h4 {
+    margin: 2px 0 15px;
+}
+
+.main .container p {
+    margin: 5px 0;
+}
+
+.main .container p:last-of-type{
+    margin-bottom: 0;
 }

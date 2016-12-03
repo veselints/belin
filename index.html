@@ -12,132 +12,134 @@
 </head>
 
 <body ng-app="belinApp" ng-cloak>
-    <!-- header -->
-    <header class="header-container">
-        <div class="header">
-            <h1 class="name"><a href="./#/" >Belin Mollov //</a></h1>
-            <nav class="navigation">
-                <ul class="main-menu">
-                    <li><a class="main-link" title="For me" href="#/about">За мен</a></li>
-                    <li><a class="main-link" title="professional">Професионален път<i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
-                    <li><a class="main-link" title="paintings">Картини<i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
-                    <li><a class="main-link photos" title="photos">Снимки<i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
-                    <li><a class="main-link" title="CUrrent">Актуално</a></li>
-                </ul>
-            </nav>
+    <div class="page-wrap">
+        <!-- header -->
+        <header class="header-container">
+            <div class="header">
+                <h1 class="name"><a href="./#/" >Belin Mollov //</a></h1>
+                <nav class="navigation">
+                    <ul class="main-menu">
+                        <li><a class="main-link" title="For me" href="#/about">За мен</a></li>
+                        <li><a class="main-link" title="professional">Професионален път<i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
+                        <li><a class="main-link" title="paintings">Картини<i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
+                        <li><a class="main-link photos" title="photos">Снимки<i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
+                        <li><a class="main-link" title="CUrrent">Актуално</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="menu-dropdown hidden-dropdown professional">
+            <div class="menu-dropdown-inner">
+                <div class="menu-dropdown-column">
+                    <h4 class="menu-dropdown-heading"><a href="#/main/regional" >Регионално и местно развитие</a></h4>
+                    <ul class="menu-dropdown-sublist">
+                        <li><a href="#/regional/archive">Архив (МРРБ 1991 – 2010 г.)</a></li>
+                        <li><a href="#/regional/projects">Проекти</a></li>
+                        <li><a href="#/regional/publications">Публикации</a></li>
+                        <li><a href="#/regional/presentations">Презентации</a></li>
+                    </ul>
+                </div>
+                <div class="menu-dropdown-column">
+                    <h4 class="menu-dropdown-heading"><a href="#/main/planning" >Пространствено планиране</a></h4>
+                    <ul class="menu-dropdown-sublist">
+                        <li><a href="#/planning/archive">Архив (Генплан София 1970 – 1990 г.)</a></li>
+                        <li><a href="#/planning/projects">Проекти</a></li>
+                        <li><a href="#/planning/publications">Публикации</a></li>
+                        <li><a href="#/planning/presentations">Презентации</a></li>
+                    </ul>
+                </div>
+                <div class="menu-dropdown-column">
+                    <h4 class="menu-dropdown-heading"><a href="#/main/community" >Работа със заинтересовани страни</a></h4>
+                    <ul class="menu-dropdown-sublist">
+                        <li><a href="#/community/trainings">Обучения (магистърски програми)</a></li>
+                        <li><a href="#/community/forums">Обществени форуми</a></li>
+                        <li><a href="#/community/publications">Публикации</a></li>
+                        <li><a href="#/community/presentations">Презентации</a></li>
+                    </ul>
+                </div>
+                <div class="menu-dropdown-column">
+                    <h4 class="menu-dropdown-heading"><a href="#/main/regeneration" >Градско възстановяване и развитие</a></h4>
+                    <ul class="menu-dropdown-sublist">
+                        <li><a href="#/regeneration/projects">Проекти (добри практики)</a></li>
+                        <li><a href="#/regeneration/regeneration">Регенерация</a></li>
+                        <li><a href="#/regeneration/publications">Публикации</a></li>
+                        <li><a href="#/regeneration/presentations">Презентации</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </header>
-    <div class="menu-dropdown hidden-dropdown professional">
-        <div class="menu-dropdown-inner">
-            <div class="menu-dropdown-column">
-                <h4 class="menu-dropdown-heading"><a href="#/main/regional" >Регионално и местно развитие</a></h4>
-                <ul class="menu-dropdown-sublist">
-                    <li><a href="#/regional/archive">Архив (МРРБ 1991 – 2010 г.)</a></li>
-                    <li><a href="#/regional/projects">Проекти</a></li>
-                    <li><a href="#/regional/publications">Публикации</a></li>
-                    <li><a href="#/regional/presentations">Презентации</a></li>
-                </ul>
-            </div>
-            <div class="menu-dropdown-column">
-                <h4 class="menu-dropdown-heading"><a href="#/main/planning" >Пространствено планиране</a></h4>
-                <ul class="menu-dropdown-sublist">
-                    <li><a href="#/planning/archive">Архив (Генплан София 1970 – 1990 г.)</a></li>
-                    <li><a href="#/planning/projects">Проекти</a></li>
-                    <li><a href="#/planning/publications">Публикации</a></li>
-                    <li><a href="#/planning/presentations">Презентации</a></li>
-                </ul>
-            </div>
-            <div class="menu-dropdown-column">
-                <h4 class="menu-dropdown-heading"><a href="#/main/community" >Работа със заинтересовани страни</a></h4>
-                <ul class="menu-dropdown-sublist">
-                    <li><a href="#/community/trainings">Обучения (магистърски програми)</a></li>
-                    <li><a href="#/community/forums">Обществени форуми</a></li>
-                    <li><a href="#/community/publications">Публикации</a></li>
-                    <li><a href="#/community/presentations">Презентации</a></li>
-                </ul>
-            </div>
-            <div class="menu-dropdown-column">
-                <h4 class="menu-dropdown-heading"><a href="#/main/regeneration" >Градско възстановяване и развитие</a></h4>
-                <ul class="menu-dropdown-sublist">
-                    <li><a href="#/regeneration/projects">Проекти (добри практики)</a></li>
-                    <li><a href="#/regeneration/regeneration">Регенерация</a></li>
-                    <li><a href="#/regeneration/publications">Публикации</a></li>
-                    <li><a href="#/regeneration/presentations">Презентации</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="menu-dropdown hidden-dropdown paintings menu-dropdown-small">
-        <div class="menu-dropdown-inner">
-            <div class="menu-dropdown-column">
-                <h4 class="menu-dropdown-heading"><a href="" >
+        <div class="menu-dropdown hidden-dropdown paintings menu-dropdown-small">
+            <div class="menu-dropdown-inner">
+                <div class="menu-dropdown-column">
+                    <h4 class="menu-dropdown-heading"><a href="" >
                     <i class="fa fa-paint-brush big-icon" aria-hidden="true"></i>
                     Акварели
                     <!-- <br/> -->
                 </a></h4>
-            </div>
-            <div class="menu-dropdown-column">
-                <h4 class="menu-dropdown-heading"><a href="" >
+                </div>
+                <div class="menu-dropdown-column">
+                    <h4 class="menu-dropdown-heading"><a href="" >
                 <i class="fa fa-tint big-icon" aria-hidden="true"></i>
                 Маслени бои
                 <!-- <br/> -->
               </a></h4>
-            </div>
-            <div class="menu-dropdown-column">
-                <h4 class="menu-dropdown-heading"><a href="" >
+                </div>
+                <div class="menu-dropdown-column">
+                    <h4 class="menu-dropdown-heading"><a href="" >
                     <i class="fa fa-pencil big-icon" aria-hidden="true"></i>
                     Графика
                     <!-- <br/> -->
                 </a></h4>
-            </div>
-            <div class="menu-dropdown-column">
-                <h4 class="menu-dropdown-heading"><a href="" >
+                </div>
+                <div class="menu-dropdown-column">
+                    <h4 class="menu-dropdown-heading"><a href="" >
                     <i class="fa fa-eraser big-icon" aria-hidden="true"></i>
                     Рисунки
                     <!-- <br/> -->
                 </a></h4>
+                </div>
             </div>
         </div>
+        <div class="menu-dropdown hidden-dropdown photos">
+            <div class="menu-dropdown-inner">
+                <div class="menu-dropdown-column">
+                    <h4 class="menu-dropdown-heading"><a href="" >От България</a></h4>
+                    <ul class="menu-dropdown-sublist">
+                        <li><a href="#/photos/danube">Край Дунав</a></li>
+                        <li><a href="#/photos/blacksea">Черно море</a></li>
+                        <li><a href="#/photos/tracia">Тракия</a></li>
+                    </ul>
+                </div>
+                <div class="menu-dropdown-column">
+                    <h4 class="menu-dropdown-heading"><a href="" >От България</a></h4>
+                    <ul class="menu-dropdown-sublist">
+                        <li><a href="#/photos/balkan">Балканът</a></li>
+                        <li><a href="#/photos/mountains">Рила, Родопи, Пирин</a></li>
+                        <li><a href="#/photos/swbg">Югозападна България</a></li>
+                    </ul>
+                </div>
+                <div class="menu-dropdown-column">
+                    <h4 class="menu-dropdown-heading"><a href="" >Извън България</a></h4>
+                    <ul class="menu-dropdown-sublist">
+                        <li><a href="#/photos/europe">Европа</a></li>
+                        <li><a href="#/photos/asia">Азия</a></li>
+                        <li><a href="#/photos/america">Америка</a></li>
+                        <li><a href="#/photos/africa">Африка</a></li>
+                    </ul>
+                </div>
+                <div class="menu-dropdown-column">
+                    <h4 class="menu-dropdown-heading"><a href="#/photos/colages" >Колажи</a></h4>
+                </div>
+            </div>
+        </div>
+        <!-- Main content -->
+        <main class="main">
+            <div ng-view>
+            </div>
+        </main>
     </div>
-    <div class="menu-dropdown hidden-dropdown photos">
-        <div class="menu-dropdown-inner">
-            <div class="menu-dropdown-column">
-                <h4 class="menu-dropdown-heading"><a href="" >От България</a></h4>
-                <ul class="menu-dropdown-sublist">
-                    <li><a href="">Край Дунав</a></li>
-                    <li><a href="">Черно море</a></li>
-                    <li><a href="">Тракия</a></li>
-                </ul>
-            </div>
-            <div class="menu-dropdown-column">
-                <h4 class="menu-dropdown-heading"><a href="" >От България</a></h4>
-                <ul class="menu-dropdown-sublist">
-                    <li><a href="">Балканът</a></li>
-                    <li><a href="">Рила, Родопи, Пирин</a></li>
-                    <li><a href="">Югозападна България</a></li>
-                </ul>
-            </div>
-            <div class="menu-dropdown-column">
-                <h4 class="menu-dropdown-heading"><a href="" >Извън България</a></h4>
-                <ul class="menu-dropdown-sublist">
-                    <li><a href="">Европа</a></li>
-                    <li><a href="">Азия</a></li>
-                    <li><a href="">Америка</a></li>
-                    <li><a href="">Африка</a></li>
-                </ul>
-            </div>
-            <div class="menu-dropdown-column">
-                <h4 class="menu-dropdown-heading"><a href="" >Колажи</a></h4>
-            </div>
-        </div>
-    </div>
-    <!-- Main content -->
-    <main class="main">
-        <div ng-view>
-        </div>
-    </main>
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <p class="footer-text">
             <a class="link" href="https://github.com/veselints" "Veselin Tsvetanov">&copy; veselints</a>
         </p>
@@ -163,6 +165,7 @@
     <script src="controllers/trainings-controller.js"></script>
     <script src="controllers/regeneration-controller.js"></script>
     <script src="controllers/main-section-controller.js"></script>
+    <script src="controllers/photos-controller.js"></script>
     <!-- <script src="controllers/search-controller.js"></script> -->
     <!-- Loading services -->
     <!-- <script src="services/works-service.js"></script> -->

@@ -1,0 +1,17 @@
+<div class="archive-container clearfix">
+    <p class="no-photos-message" ng-hide={{(vm.hasPhotos)}}>Не са намерени снимки.</p>
+    <h2 ng-show={{(vm.hasPhotos)}}>
+		{{vm.section}}
+	</h2>
+    <div class="container">
+        <div ng-repeat="photo in vm.photos">
+            <div class="inner-photo-container" ng-click="vm.loadPhoto(photo.id)">
+                <div class="photo-image">
+                    <img class="photo-image" ng-src="{{photo.url}}">
+                </div>
+                <h4 class="name">{{photo.name}}</h4>
+                <p class="year">{{photo.year}}</p>
+            </div>
+        </div>
+    </div>
+</div>
