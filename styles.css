@@ -339,3 +339,12 @@ footer .footer-text {
 .source {
     margin-bottom: 1em;
 }
+
+/* Styling Publications page */
+.more-link {
+    float: right;
+    font-style: italic;
+    font-size: 0.9em;
+    margin-top: 1em;
+    color: #666;
+}

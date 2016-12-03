@@ -11,26 +11,31 @@
         controller: 'HomeController',
         controllerAs: CONTROLLER_AS_VM
       })
+
       .when('/about', {
         templateUrl: PARTIALS_PREFIX + 'about.html',
         controller: 'AboutController',
         controllerAs: CONTROLLER_AS_VM
       })
-      .when('/community-building/trainings', {
+
+
+      .when('/community/trainings', {
         templateUrl: PARTIALS_PREFIX + 'trainings.html',
         controller: 'TrainingsController',
         controllerAs: CONTROLLER_AS_VM
       })
-      .when('/community-building/forums', {
+      .when('/community/forums', {
         templateUrl: PARTIALS_PREFIX + 'forums.html',
         controller: 'ForumsController',
         controllerAs: CONTROLLER_AS_VM
       })
+
       .when('/regeneration/regeneration', {
         templateUrl: PARTIALS_PREFIX + 'regeneration.html',
         controller: 'RegenerationController',
         controllerAs: CONTROLLER_AS_VM
       })
+
       .when('/:section/archive', {
         templateUrl: PARTIALS_PREFIX + 'archive.html',
         controller: 'ArchiveController',
@@ -46,6 +51,11 @@
         controller: 'ProjectsController',
         controllerAs: CONTROLLER_AS_VM
       })
+      .when('/:section/publications/:publication', {
+        templateUrl: PARTIALS_PREFIX + 'publication.html',
+        controller: 'PublicationDetailsController',
+        controllerAs: CONTROLLER_AS_VM
+      })
       .when('/:section/publications', {
         templateUrl: PARTIALS_PREFIX + 'publications.html',
         controller: 'PublictionsController',
@@ -56,11 +66,15 @@
         controller: 'PresentationsController',
         controllerAs: CONTROLLER_AS_VM
       })
-      .when('/regional', {
-        templateUrl: PARTIALS_PREFIX + 'regional.html',
-        controller: 'RegionalController',
+
+      .when('/main/:section', {
+        templateUrl: PARTIALS_PREFIX + 'main-section.html',
+        controller: 'MainSectionController',
         controllerAs: CONTROLLER_AS_VM
       })
+
+
+
       .otherwise({
         redirectTo: '/'
       });
