@@ -229,15 +229,23 @@ h2 {
     margin: 0 1em 0 0;
 }
 
-/*Styling home page*/
-.home-image {
+/*Styling home / painting page*/
+.home-image,
+.painting-page-image {
     margin: 3em 0;
-    height: 75vh;
     width: 100%;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url("./images/Elephant-Watercolor-Painting.jpg");
+}
+
+.home-image {
+    height: 75vh;
+    background-image: url("./Paintings/Ruse/Ruse_Batemberg_1.jpg");
+}
+
+.painting-page-image {
+    height: 71vh;
 }
 
 /* Styling About page */
@@ -399,6 +407,7 @@ h2 {
   max-width: 251px;
   margin: auto;
   display: block;
+}
 
 .main .container h4 {
     margin: 2px 0 15px;
@@ -410,4 +419,38 @@ h2 {
 
 .main .container p:last-of-type{
     margin-bottom: 0;
+}
+
+/* Styling paintings */
+.paintings-container {
+    width: 1280px;
+    margin: 2em auto;
+}
+
+.inner-paintings-container {
+    border: 1px solid #DDD;
+    padding: 30px;
+    margin:50px;
+    cursor: pointer;
+}
+
+.painting-image {
+    display: block;
+    margin: 0 auto;
+    height: 500px;
+    width: 1200px;
+}
+
+.painting-image img {
+    height: auto;
+    width: auto;
+    max-height: 498px;
+    max-width: 1198px;
+    margin: auto;
+    display: block;
+}
+
+.main .container h4.painting-name {
+    margin: 5px 0 0 0;
+    font-weight: 900;
 }

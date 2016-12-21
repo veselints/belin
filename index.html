@@ -71,7 +71,7 @@
         <div class="menu-dropdown hidden-dropdown paintings menu-dropdown-small">
             <div class="menu-dropdown-inner">
                 <div class="menu-dropdown-column">
-                    <h4 class="menu-dropdown-heading"><a href="" >
+                    <h4 class="menu-dropdown-heading"><a href="#/paintings/ruse" >
                     <i class="fa fa-paint-brush big-icon" aria-hidden="true"></i>
                     Акварели
                     <!-- <br/> -->
@@ -151,6 +151,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.js"></script>
     <!-- Loading app -->
     <script src="app.js"></script>
+    <!-- Loading services -->
+    <script src="services/paintings-service.js"></script>
+    <!-- <script src="services/data-service.js"></script> -->
     <!-- Loading controllers -->
     <script src="controllers/home-controller.js"></script>
     <script src="controllers/about-controller.js"></script>
@@ -166,10 +169,9 @@
     <script src="controllers/regeneration-controller.js"></script>
     <script src="controllers/main-section-controller.js"></script>
     <script src="controllers/photos-controller.js"></script>
-    <!-- <script src="controllers/search-controller.js"></script> -->
-    <!-- Loading services -->
-    <!-- <script src="services/works-service.js"></script> -->
-    <!-- <script src="services/data-service.js"></script> -->
+    <script src="controllers/paintings-controller.js"></script>
+    <script src="controllers/painting-controller.js"></script>
+    
     <script type="text/javascript">
     $('document').ready(function() {
         $('.main-link').on('click', function(e) {

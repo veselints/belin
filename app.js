@@ -83,7 +83,16 @@
 
 
       // Paintings navigation
-
+      .when('/paintings/:region/:paintingId', {
+        templateUrl: PARTIALS_PREFIX + 'painting.html',
+        controller: 'PaintingController',
+        controllerAs: CONTROLLER_AS_VM
+      })
+      .when('/paintings/:region', {
+        templateUrl: PARTIALS_PREFIX + 'paintings.html',
+        controller: 'PaintingsController',
+        controllerAs: CONTROLLER_AS_VM
+      })
 
 
       // Otherwise
