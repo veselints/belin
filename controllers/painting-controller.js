@@ -3,10 +3,11 @@
 
   function PaintingController($location, $routeParams, paintingsService) {
     var vm = this;
+    var region = $routeParams.region.toLowerCase();
     var id = $routeParams.paintingId;
 
-    vm.region = $routeParams.region.toLowerCase();
-    vm.painting = paintingsService.getPaintingById(id);
+    vm.region = region;
+    vm.painting = paintingsService.getPaintingById(region, id);
   }
 
   angular.module('belinApp.controllers')

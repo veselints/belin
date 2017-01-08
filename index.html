@@ -73,29 +73,25 @@
                 <div class="menu-dropdown-column">
                     <h4 class="menu-dropdown-heading"><a href="#/paintings/ruse" >
                     <i class="fa fa-paint-brush big-icon" aria-hidden="true"></i>
-                    Акварели
-                    <!-- <br/> -->
+                    Русе
                 </a></h4>
                 </div>
                 <div class="menu-dropdown-column">
-                    <h4 class="menu-dropdown-heading"><a href="" >
-                <i class="fa fa-tint big-icon" aria-hidden="true"></i>
-                Маслени бои
-                <!-- <br/> -->
+                    <h4 class="menu-dropdown-heading"><a href="#/paintings/monasteries" >
+                    <i class="fa fa-tint big-icon" aria-hidden="true"></i>
+                    Манастири
               </a></h4>
                 </div>
                 <div class="menu-dropdown-column">
-                    <h4 class="menu-dropdown-heading"><a href="" >
+                    <h4 class="menu-dropdown-heading"><a href="#/paintings/plovdiv" >
                     <i class="fa fa-pencil big-icon" aria-hidden="true"></i>
-                    Графика
-                    <!-- <br/> -->
+                    Пловдив
                 </a></h4>
                 </div>
                 <div class="menu-dropdown-column">
                     <h4 class="menu-dropdown-heading"><a href="" >
                     <i class="fa fa-eraser big-icon" aria-hidden="true"></i>
                     Рисунки
-                    <!-- <br/> -->
                 </a></h4>
                 </div>
             </div>
@@ -151,6 +147,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.js"></script>
     <!-- Loading app -->
     <script src="app.js"></script>
+    <!-- Loading data -->
+    <script src="services/paintigs-data/ruse-paintings.js"></script>
+    <script src="services/paintigs-data/monasteries-paintings.js"></script>
+    <script src="services/paintigs-data/plovdiv-paintings.js"></script>
     <!-- Loading services -->
     <script src="services/paintings-service.js"></script>
     <!-- <script src="services/data-service.js"></script> -->
@@ -171,7 +171,6 @@
     <script src="controllers/photos-controller.js"></script>
     <script src="controllers/paintings-controller.js"></script>
     <script src="controllers/painting-controller.js"></script>
-    
     <script type="text/javascript">
     $('document').ready(function() {
         $('.main-link').on('click', function(e) {
