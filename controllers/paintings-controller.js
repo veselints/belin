@@ -3,7 +3,8 @@
 
   var params = {
   	ruse: 'Русе',
-  	monasteries: 'Манастири'
+  	monasteries: 'Манастири',
+    plovdiv: 'Пловдив'
   };
 
   function PaintingsController($location, $routeParams, paintingsService) {
