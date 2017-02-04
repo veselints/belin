@@ -1,0 +1,19 @@
+{
+  "name": "belin-server",
+  "version": "0.0.1",
+  "description": "The server for Belin's web site",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "veselints",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.1",
+    "mongoose": "^4.8.1",
+    "passport": "^0.3.2",
+    "passport-http-bearer": "^1.0.1",
+    "rand-token": "^0.3.0"
+  }
+}
