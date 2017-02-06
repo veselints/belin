@@ -8,7 +8,7 @@ let paintingSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    region: {
+    area: {
         type: String,
         required: true
     },
@@ -23,10 +23,6 @@ let paintingSchema = new mongoose.Schema({
     },
     year: {
         type: Number,
-        required: true
-    },
-    picture: {
-        type: String,
         required: true
     }
 });

@@ -1,22 +1,92 @@
-(function() {
-  'use strict';
+'use strict';
 
-  var params = {
-  	development: 'регионалното и местното развитие',
-  	planning: 'пространственото планиране',
-  	community: 'работата със заинтересованите страни',
-  	regeneration: 'градското възстановяване и развитие'
-  };
+let mongoose = require('mongoose'),
+    fs = require('fs');
 
-  function PublictionsController($location, $routeParams, publicationsService) {
-    var vm = this;
-    var currentSection = $routeParams.section;
-    vm.section = currentSection;
-    vm.sectionInBg = params[currentSection];
+require('../models/publication-model');
+let Publication = mongoose.model('Publication');
 
-    vm.publications = publicationsService.getPublicationBySection(currentSection);
-  }
+let getCount = function(req, res, next) {
+    Publication.count({}, function(err, count) {
+        if (err) {
+            next(err);
+            return;
+        }
+        res.status(200);
+        res.json(count);
+    });
+};
 
-  angular.module('belinApp.controllers')
-    .controller('PublictionsController', ['$location', '$routeParams', 'publicationsService', PublictionsController]);
-}());
+let getByArea = function(req, res, next) {
+    let currentArea = req.params.area;
+    if (!currentArea || currentArea === "") {
+        next({
+            message: "Bad request!",
+            status: 404
+        });
+        return;
+    }
+
+    Publication.find({
+        'area': currentArea
+    }).sort('-date')
+        .exec(function(err, publications) {
+            if (err) {
+                next(err);
+                return;
+            }
+            res.status(200);
+            res.json(publications);
+        });
+};
+
+let create = function(req, res, next) {
+    var newPublication = new Publication(req.body);
+
+    newPublication.save(function(err) {
+        if (err) {
+            let error = {
+                message: err.message,
+                status: 400
+            };
+            next(err);
+            return;
+        } else {
+            res.status(201);
+            res.json(newPublication);
+        }
+    });
+};
+
+let bulckCreate = function(req, res, next) {
+    let len = req.body.length;
+
+    for (let i = 0; i < len; i++) {
+        var newPublication = new Publication(req.body[i]);
+        
+        newPublication.save(function(err) {
+            if (err) {
+                let error = {
+                    message: err.message,
+                    status: 400
+                };
+                next(err);
+                return;
+            } else {
+
+            }
+        });
+
+        console.log(newPublication.url);
+    };
+
+    res.json({});
+};
+
+let controller = {
+    getByArea,
+    create,
+    bulckCreate
+};
+
+module.exports = controller;

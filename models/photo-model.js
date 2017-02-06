@@ -8,7 +8,7 @@ let photoSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    category: {
+    area: {
         type: String,
         required: true
     },
