@@ -6,6 +6,9 @@ let mongoose = require('mongoose'),
 require('../models/publication-model');
 let Publication = mongoose.model('Publication');
 
+require('../models/user-model');
+let User = mongoose.model('User');
+
 let getCount = function(req, res, next) {
     Publication.count({}, function(err, count) {
         if (err) {
@@ -28,8 +31,8 @@ let getByArea = function(req, res, next) {
     }
 
     Publication.find({
-        'area': currentArea
-    }).sort('-date')
+            'area': currentArea
+        }).sort('-date')
         .exec(function(err, publications) {
             if (err) {
                 next(err);
@@ -42,19 +45,35 @@ let getByArea = function(req, res, next) {
 
 let create = function(req, res, next) {
     var newPublication = new Publication(req.body);
+    var authKey = req.headers['x-auth-key'];
 
-    newPublication.save(function(err) {
+    User.findOne({
+        'authKey': authKey
+    }, function(err, user) {
         if (err) {
-            let error = {
-                message: err.message,
-                status: 400
-            };
             next(err);
             return;
-        } else {
-            res.status(201);
-            res.json(newPublication);
+        } else if (user === null) {
+            next({
+                message: "Authentication failed!",
+                status: 401
+            });
+            return;
         }
+
+        newPublication.save(function(err) {
+            if (err) {
+                let error = {
+                    message: err.message,
+                    status: 400
+                };
+                next(err);
+                return;
+            } else {
+                res.status(201);
+                res.json(newPublication);
+            }
+        });
     });
 };
 
@@ -63,7 +82,7 @@ let bulckCreate = function(req, res, next) {
 
     for (let i = 0; i < len; i++) {
         var newPublication = new Publication(req.body[i]);
-        
+
         newPublication.save(function(err) {
             if (err) {
                 let error = {

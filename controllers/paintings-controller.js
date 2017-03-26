@@ -6,6 +6,9 @@ let mongoose = require('mongoose'),
 require('../models/painting-model');
 let Painting = mongoose.model('Painting');
 
+require('../models/user-model');
+let User = mongoose.model('User');
+
 var multer = require('multer');
 
 let storage = multer.diskStorage({
@@ -86,19 +89,35 @@ let getById = function(req, res, next) {
 
 let create = function(req, res, next) {
     var newPainting = new Painting(req.body.model);
+    var authKey = req.headers['x-auth-key'];
 
-    newPainting.save(function(err) {
+    User.findOne({
+        'authKey': authKey
+    }, function(err, user) {
         if (err) {
-            let error = {
-                message: err.message,
-                status: 400
-            };
             next(err);
             return;
-        } else {
-            res.status(201);
-            res.json(newPainting);
+        } else if (user === null) {
+            next({
+                message: "Authentication failed!",
+                status: 401
+            });
+            return;
         }
+
+        newPainting.save(function(err) {
+            if (err) {
+                let error = {
+                    message: err.message,
+                    status: 400
+                };
+                next(err);
+                return;
+            } else {
+                res.status(201);
+                res.json(newPainting);
+            }
+        });
     });
 };
 

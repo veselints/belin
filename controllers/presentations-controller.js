@@ -6,6 +6,9 @@ let mongoose = require('mongoose'),
 require('../models/presentation-model');
 let Presentation = mongoose.model('Presentation');
 
+require('../models/user-model');
+let User = mongoose.model('User');
+
 let getCount = function(req, res, next) {
     Presentation.count({}, function(err, count) {
         if (err) {
@@ -42,7 +45,31 @@ let getByArea = function(req, res, next) {
 
 let create = function(req, res, next) {
     var newPresentation = new Presentation(req.body);
+    var authKey = req.headers['x-auth-key'];
     
+    User.findOne({
+        'authKey': authKey
+    }, function(err, user) {
+        if (err) {
+            next(err);
+            return;
+        } else if (user === null) {
+            next({
+                message: "Authentication failed!",
+                status: 401
+            });
+            return;
+        }
+
+        upload(req, res, function(err) {
+            if (err) {
+                next(err);
+                return;
+            }
+            res.status(201);
+        });
+    });
+
     newPresentation.save(function(err) {
         if (err) {
             let error = {

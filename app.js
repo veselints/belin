@@ -7,7 +7,7 @@ let express = require('express'),
     multer = require('multer');
 
 // Connecting to local mongodb
-let connectionString = 'mongodb://127.0.0.1:27017/thestyle';
+let connectionString = 'mongodb://127.0.0.1:27017/belin';
 // let connectionString = process.env.MONGOLAB_URI;
 mongoose.connect(connectionString);
 
@@ -30,6 +30,8 @@ app.use(express.static('./client'));
 // Point the server to the router we have created
 let belinRouter = require('./routers/belin-router');
 belinRouter(app);
+let usersRouter = require('./routers/users-router');
+usersRouter(app);
 
 // Middleware to handle errors on the server
 app.use(function(err, req, res, next) {

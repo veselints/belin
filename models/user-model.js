@@ -8,6 +8,13 @@ let userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
+    },
+    passHash: {
+        type: String,
+        required: true
+    },
+    authKey: {
+        type: String
     }
 });
 

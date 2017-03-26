@@ -1,6 +1,10 @@
 'use strict'
 
 let multer = require('multer');
+let mongoose = require('mongoose');
+
+require('../models/user-model');
+let User = mongoose.model('User');
 
 let storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -16,12 +20,29 @@ let upload = multer({
 }).single('file');
 
 let add = function(req, res, next) {
-    upload(req, res, function(err) {
+    var authKey = req.headers['x-auth-key'];
+
+    User.findOne({
+        'authKey': authKey
+    }, function(err, user) {
         if (err) {
             next(err);
             return;
+        } else if (user === null) {
+            next({
+                message: "Authentication failed!",
+                status: 401
+            });
+            return;
         }
-        res.status(201);
+
+        upload(req, res, function(err) {
+            if (err) {
+                next(err);
+                return;
+            }
+            res.status(201);
+        });
     });
 };
 

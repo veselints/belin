@@ -6,6 +6,9 @@ let mongoose = require('mongoose'),
 require('../models/forum-model');
 let Forum = mongoose.model('Forum');
 
+require('../models/user-model');
+let User = mongoose.model('User');
+
 let getCount = function(req, res, next) {
     Forum.count({}, function(err, count) {
         if (err) {
@@ -60,19 +63,35 @@ let getById = function(req, res, next) {
 
 let create = function(req, res, next) {
     var newForum = new Forum(req.body);
+    var authKey = req.headers['x-auth-key'];
     
-    newForum.save(function(err) {
+    User.findOne({
+        'authKey': authKey
+    }, function(err, user) {
         if (err) {
-            let error = {
-                message: err.message,
-                status: 400
-            };
             next(err);
             return;
-        } else {
-            res.status(201);
-            res.json(newForum);
+        } else if (user === null) {
+            next({
+                message: "Authentication failed!",
+                status: 401
+            });
+            return;
         }
+
+        newForum.save(function(err) {
+            if (err) {
+                let error = {
+                    message: err.message,
+                    status: 400
+                };
+                next(err);
+                return;
+            } else {
+                res.status(201);
+                res.json(newForum);
+            }
+        });
     });
 };
 

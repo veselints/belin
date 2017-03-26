@@ -6,6 +6,9 @@ let mongoose = require('mongoose'),
 require('../models/archive-model');
 let Archive = mongoose.model('Archive');
 
+require('../models/user-model');
+let User = mongoose.model('User');
+
 let getCount = function(req, res, next) {
     Archive.count({}, function(err, count) {
         if (err) {
@@ -28,8 +31,8 @@ let getByArea = function(req, res, next) {
     }
 
     Archive.find({
-        'area': currentArea
-    }).sort('-year')
+            'area': currentArea
+        }).sort('-year')
         .exec(function(err, archives) {
             if (err) {
                 next(err);
@@ -70,19 +73,35 @@ let getById = function(req, res, next) {
 
 let create = function(req, res, next) {
     var newArchive = new Archive(req.body);
-
-    newArchive.save(function(err) {
+    var authKey = req.headers['x-auth-key'];
+    
+    User.findOne({
+        'authKey': authKey
+    }, function(err, user) {
         if (err) {
-            let error = {
-                message: err.message,
-                status: 400
-            };
             next(err);
             return;
-        } else {
-            res.status(201);
-            res.json(newArchive);
+        } else if (user === null) {
+            next({
+                message: "Authentication failed!",
+                status: 401
+            });
+            return;
         }
+
+        newArchive.save(function(err) {
+            if (err) {
+                let error = {
+                    message: err.message,
+                    status: 400
+                };
+                next(err);
+                return;
+            } else {
+                res.status(201);
+                res.json(newArchive);
+            }
+        });
     });
 };
 

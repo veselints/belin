@@ -94,7 +94,7 @@
         text: 'Русе'
     }];
 
-    function AdminController($scope, $http, Upload, $window) {
+    function AdminController($window, $location, usersService, contentService) {
         var vm = this;
         vm.showAreas = true;
         vm.areaOptions = paintingsAreaOptions;
@@ -103,6 +103,12 @@
         vm.showForPublications = false;
         vm.majorCategory = 'paintings';
         vm.pass;
+
+        if (!usersService.hasUser()) {
+            console.log("in")
+            $window.alert('No user is logged in!');
+            $location.path('/login');
+        }
 
         vm.model = {
             area: 'ruse',
@@ -151,38 +157,29 @@
         vm.submit = function() {
             if (vm.form.file.$valid && vm.file) {
                 vm.upload(vm.file);
-
             }
         }
 
         vm.upload = function(file) {
             var model = vm.model;
             model.fileName = vm.majorCategory + '/' + file.name;
+            
+            contentService.create(vm.majorCategory, vm.model)
+                .then(function(res) {
+                    $window.alert('Entry created');
+                }, function(res) {
+                    $window.alert(res.data.message);
+                });
 
-            $http({
-                method: 'POST',
-                url: 'http://localhost:7777/api/belin/' + vm.majorCategory,
-                data: JSON.stringify({ model: vm.model, pass: vm.pass })
-            }).then(function(res) {
-                $window.alert('Entry created');
-            }, function(res) {
-                debugger;
-                $window.alert(res.data.message);
-            });
-
-            Upload.upload({
-                url: 'http://localhost:7777/api/belin/files/' + vm.majorCategory,
-                data: {
-                    file: file
-                }
-            }).then(function(res) {
-                $window.alert('Success ' + res.config.data.file.name + ' uploaded.');
-            }, function(res) {
-                $window.alert(res.data.message);
-            });
+            contentService.uploadFile(vm.majorCategory, file)
+                .then(function(res) {
+                    $window.alert('Success ' + res.config.data.file.name + ' uploaded.');
+                }, function(res) {
+                    $window.alert(res.data.message);
+                });
         };
     }
 
     angular.module('belinApp.controllers')
-        .controller('AdminController', ['$scope', '$http', 'Upload', '$window', AdminController]);
+        .controller('AdminController', ['$window', '$location', 'usersService', 'contentService', AdminController]);
 }());

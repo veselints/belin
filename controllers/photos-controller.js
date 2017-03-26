@@ -6,6 +6,9 @@ let mongoose = require('mongoose'),
 require('../models/photo-model');
 let Photo = mongoose.model('Photo');
 
+require('../models/user-model');
+let User = mongoose.model('User');
+
 let getCount = function(req, res, next) {
     Photo.count({}, function(err, count) {
         if (err) {
@@ -70,19 +73,35 @@ let getById = function(req, res, next) {
 
 let create = function(req, res, next) {
     var newPhoto = new Photo(req.body);
+    var authKey = req.headers['x-auth-key'];
     
-    newPhoto.save(function(err) {
+    User.findOne({
+        'authKey': authKey
+    }, function(err, user) {
         if (err) {
-            let error = {
-                message: err.message,
-                status: 400
-            };
             next(err);
             return;
-        } else {
-            res.status(201);
-            res.json(newPhoto);
+        } else if (user === null) {
+            next({
+                message: "Authentication failed!",
+                status: 401
+            });
+            return;
         }
+
+        newPhoto.save(function(err) {
+            if (err) {
+                let error = {
+                    message: err.message,
+                    status: 400
+                };
+                next(err);
+                return;
+            } else {
+                res.status(201);
+                res.json(newPhoto);
+            }
+        });
     });
 };
 

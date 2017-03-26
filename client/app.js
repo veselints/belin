@@ -17,6 +17,16 @@
         controller: 'AboutController',
         controllerAs: CONTROLLER_AS_VM
       })
+      .when('/login', {
+        templateUrl: PARTIALS_PREFIX + 'login.html',
+        controller: 'LoginController',
+        controllerAs: CONTROLLER_AS_VM
+      })
+      .when('/register', {
+        templateUrl: PARTIALS_PREFIX + 'login.html',
+        controller: 'RegisterController',
+        controllerAs: CONTROLLER_AS_VM
+      })
       .when('/admin', {
         templateUrl: PARTIALS_PREFIX + 'admin.html',
         controller: 'AdminController',

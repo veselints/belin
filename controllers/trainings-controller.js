@@ -6,6 +6,9 @@ let mongoose = require('mongoose'),
 require('../models/training-model');
 let Training = mongoose.model('Training');
 
+require('../models/user-model');
+let User = mongoose.model('User');
+
 let getCount = function(req, res, next) {
     Training.count({}, function(err, count) {
         if (err) {
@@ -60,19 +63,35 @@ let getById = function(req, res, next) {
 
 let create = function(req, res, next) {
     var newTraining = new Training(req.body);
-    
-    newTraining.save(function(err) {
+    var authKey = req.headers['x-auth-key'];
+
+    User.findOne({
+        'authKey': authKey
+    }, function(err, user) {
         if (err) {
-            let error = {
-                message: err.message,
-                status: 400
-            };
             next(err);
             return;
-        } else {
-            res.status(201);
-            res.json(newTraining);
+        } else if (user === null) {
+            next({
+                message: "Authentication failed!",
+                status: 401
+            });
+            return;
         }
+
+        newTraining.save(function(err) {
+            if (err) {
+                let error = {
+                    message: err.message,
+                    status: 400
+                };
+                next(err);
+                return;
+            } else {
+                res.status(201);
+                res.json(newTraining);
+            }
+        });
     });
 };
 
