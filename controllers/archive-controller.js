@@ -89,6 +89,8 @@ let create = function(req, res, next) {
             return;
         }
 
+        console.log(newArchive);
+
         newArchive.save(function(err) {
             if (err) {
                 let error = {

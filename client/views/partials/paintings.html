@@ -2,9 +2,9 @@
     <h2>{{vm.regionInBg}}</h2>
     <div class="container">
         <div ng-repeat="painting in vm.paintings">
-            <div class="inner-paintings-container" ng-click="vm.loadPainting(painting.id)">
+            <div class="inner-paintings-container" ng-click="vm.loadPainting(painting._id)">
                 <div class="painting-image">
-                    <img ng-src="./Paintings/{{vm.region}}/{{painting.fileName}}">
+                    <img ng-src="./uploads/{{painting.fileName}}">
                 </div>
                 <h4 class="painting-name">{{painting.title}}</h4>
                 <p class="description">{{painting.description}}</p>

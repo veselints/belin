@@ -88,7 +88,7 @@ let getById = function(req, res, next) {
 };
 
 let create = function(req, res, next) {
-    var newPainting = new Painting(req.body.model);
+    var newPainting = new Painting(req.body);
     var authKey = req.headers['x-auth-key'];
 
     User.findOne({

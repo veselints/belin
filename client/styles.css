@@ -327,6 +327,7 @@ h2 {
     background-image: url("http://veldergroup.com/thumb/phpThumb.php?src=../files/data_0/430/Image/pLdS-OUP-POPOVO.png&w=600&h=450");
     margin: 0.5em;
     position: relative;
+    border: 1px solid #EEE;
 }
 
 .project-thumb h4 {
@@ -475,4 +476,8 @@ h2 {
 
 .admin-form-element .file-container {
     display: inline-block;
+}
+
+.admin-form-element select option[disabled] {
+    color: #EEE;
 }

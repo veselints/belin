@@ -13,7 +13,12 @@
     vm.region = currentRegion;
     vm.regionInBg = params[currentRegion];
 
-    vm.paintings = paintingsService.getPaintinsByRegion(currentRegion);
+    paintingsService.getPaintinsByRegion(currentRegion)
+      .then(function(res){
+        vm.paintings = res.data;
+      }, function(err){
+        console.log(err);
+      });
 
     vm.loadPainting = function(id) {
       $location.path('/paintings/' + vm.region + '/' + id);

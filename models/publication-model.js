@@ -17,6 +17,10 @@ let publicationSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    edition: {
+        type: String,
+        required: true
+    },
     url: {
         type: String,
         required: true,

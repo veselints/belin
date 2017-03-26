@@ -3,14 +3,14 @@
         <label for="major-category">Изберете основна категория</label>
         <select name="major-category" required ng-model="vm.majorCategory" ng-change="vm.updateMajorSelection()">
             <option value="archives">Архиви</option>
-            <option value="blogposts">Актуално</option>
-            <option value="forums">Обществени форуми</option>
+            <option disabled value="blogposts">Актуално</option>
+            <option disabled value="forums">Обществени форуми</option>
             <option value="paintings">Картини</option>
             <option value="photos">Снимки</option>
             <option value="presentations">Презентации</option>
             <option value="projects">Проекти</option>
             <option value="publications">Публикации</option>
-            <option value="trainings">Обучения</option>
+            <option disabled value="trainings">Обучения</option>
         </select>
     </div>
     <div ng-show="vm.showAreas" class="admin-form-element">
@@ -33,6 +33,10 @@
     </div>
     <div ng-show="vm.showForPublications">
         <div class="admin-form-element">
+            <label for="edition">Въведете издание</label>
+            <input type="text" name="edition" ng-model="vm.model.edition" ng-required="vm.showForPublications">
+        </div>
+        <div class="admin-form-element">
             <label for="url">Въведете адрес на публикацията</label>
             <input type="url" name="url" ng-model="vm.model.url" ng-required="vm.showForPublications">
         </div>
@@ -49,14 +53,10 @@
             <input type="text" name="interviewer" ng-model="vm.model.interviewer">
         </div>
     </div>
-    <div class="admin-form-element">
-        <label for="interviewer">Въведете парола</label>
-        <input type="password" name="pass" ng-model="vm.pass" required>
-    </div>
-     <div class="admin-form-element">
+     <div class="admin-form-element" ng-show="vm.showFile">
         <label for="file">Изберете файл</label>
         <div class="file-container">
-            <input type="file" ngf-select ng-model="vm.file" name="file" ngf-max-size="3MB" required />
+            <input type="file" ngf-select ng-model="vm.file" name="file" ngf-max-size="3MB" ng-required="vm.showFile == true" />
             <p>Преглед на картинката:</p>
             <img style="width:100px;" ngf-thumbnail="vm.file" />
             <i ng-show="vm.form.file.$error.maxSize">Файлът е прекалено голям (мах 3MB)</i>

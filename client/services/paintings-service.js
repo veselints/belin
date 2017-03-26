@@ -1,24 +1,13 @@
 (function() {
     'use strict';
 
-    function paintingsService(ruseService, monasteriesService, plovdivService) {
-        var data = {
-          ruse: ruseService.ruse,
-          monasteries: monasteriesService.monasteries,
-          plovdiv: plovdivService.plovdiv
-        };
-
+    function paintingsService(data) {
         var getPaintinsByRegion = function(region) {
-          var result = data[region];
-          return result;
+          return data.get('api/belin/paintings/' + region);
         };
 
-        var getPaintingById = function(resion, id) {
-          var result = data[resion].find(function(painting) {
-            return painting.id == id;
-          });
-
-          return result;
+        var getPaintingById = function(id) {
+          return data.get('api/belin/painting/' + id);
         };
 
         return {
@@ -28,5 +17,5 @@
     }
 
     angular.module('belinApp.services')
-        .service('paintingsService', ['ruseService', 'monasteriesService', 'plovdivService', paintingsService]);
+        .service('paintingsService', ['dataService', paintingsService]);
 }());

@@ -1,16 +1,9 @@
 (function() {
     'use strict';
 
-    function publicationsService(developmentPublicationsService, planningPublicationsService, regenerationPublicationsService) {
-        var data = {
-          development: developmentPublicationsService.publications,
-          planning: planningPublicationsService.publications,
-          regeneration: regenerationPublicationsService.publications
-        };
-
+    function publicationsService(data) {
         var getPublicationBySection = function(topic) {
-          var result = data[topic];
-          return result;
+            return data.get('api/belin/publications/' + topic);
         };
 
         return {
@@ -19,5 +12,5 @@
     }
 
     angular.module('belinApp.services')
-        .service('publicationsService', ['developmentPublicationsService', 'planningPublicationsService', 'regenerationPublicationsService', publicationsService]);
+        .service('publicationsService', ['dataService', publicationsService]);
 }());

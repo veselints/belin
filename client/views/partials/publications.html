@@ -3,8 +3,8 @@
 	<div ng-repeat="publication in vm.publications">
 		<div class="project-from-archive">
 			<a href="{{publication.url}}" target="_blank"><h4>{{publication.title}}</h4></a>
-			<p class="source"><em>{{publication.edition}}</em></p>
-			<p>{{publication.abstract}}</p>
+			<p class="source"><em><strong>{{publication.edition}}</strong> {{publication.date | date:'dd/MM/yyyy'}}</em></p>
+			<p>{{publication.description}}</p>
 			<a href="{{publication.url}}" class="more-link" target="_blank">Още...</a>
 		</div>
     </div>

@@ -16,7 +16,7 @@
             };
 
             return data.post('api/users', options)
-                .then(function(user) {
+                .then(function(resp) {
                     storeAuthentication(resp.data);
 
                     return resp.data.username;

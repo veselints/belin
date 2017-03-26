@@ -12,7 +12,7 @@ let photoSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    imageName: {
+    fileName: {
         type: String,
         required: true,
         unique: true
@@ -22,8 +22,7 @@ let photoSchema = new mongoose.Schema({
         required: true
     },
     image: {
-        type: String,
-        required: true
+        type: String
     }
 });
 

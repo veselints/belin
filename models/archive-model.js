@@ -24,10 +24,6 @@ let archiveSchema = new mongoose.Schema({
     year: {
         type: Number,
         required: true
-    },
-    file: {
-        type: String,
-        required: true
     }
 });
 

@@ -7,7 +7,7 @@
         'photos',
         'presentations',
         'projects',
-        'publications',
+        'publications'
     ];
 
     var noYearCategories = [
@@ -103,9 +103,9 @@
         vm.showForPublications = false;
         vm.majorCategory = 'paintings';
         vm.pass;
+        vm.showFile = true;
 
         if (!usersService.hasUser()) {
-            console.log("in")
             $window.alert('No user is logged in!');
             $location.path('/login');
         }
@@ -128,6 +128,7 @@
 
             if (areaCategories.indexOf(selectedCategory) > -1) {
                 vm.showAreas = true;
+                vm.showFile = true;
 
                 if (selectedCategory === 'photos') {
                     vm.areaOptions = photosAreaOptions;
@@ -143,6 +144,7 @@
 
                     if (selectedCategory === 'publications') {
                         vm.showForPublications = true;
+                        vm.showFile = false;
                     }
                 }
             } else {
@@ -151,31 +153,39 @@
                 }
 
                 vm.showAreas = false;
+                vm.showFile = false;
             }
         }
 
         vm.submit = function() {
-            if (vm.form.file.$valid && vm.file) {
-                vm.upload(vm.file);
+            if (vm.showFile) {
+                if (vm.form.file.$valid && vm.file) {
+                    upload(vm.file);
+                }
+            }
+
+            if (vm.form.$valid) {
+                createContent();
             }
         }
 
-        vm.upload = function(file) {
-            var model = vm.model;
-            model.fileName = vm.majorCategory + '/' + file.name;
-            
-            contentService.create(vm.majorCategory, vm.model)
-                .then(function(res) {
-                    $window.alert('Entry created');
-                }, function(res) {
-                    $window.alert(res.data.message);
-                });
+        var upload = function(file) {
+            vm.model.fileName = vm.majorCategory + '/' + file.name;
 
             contentService.uploadFile(vm.majorCategory, file)
                 .then(function(res) {
                     $window.alert('Success ' + res.config.data.file.name + ' uploaded.');
-                }, function(res) {
-                    $window.alert(res.data.message);
+                }, function(err) {
+                    $window.alert(err.data.message);
+                });
+        };
+
+        var createContent = function() {
+            contentService.create(vm.majorCategory, vm.model)
+                .then(function(res) {
+                    $window.alert('Entry created');
+                }, function(err) {
+                    $window.alert(err.data.message);
                 });
         };
     }

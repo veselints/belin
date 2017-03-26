@@ -66,11 +66,6 @@
         controller: 'ProjectsController',
         controllerAs: CONTROLLER_AS_VM
       })
-      .when('/:section/publications/:publication', {
-        templateUrl: PARTIALS_PREFIX + 'publication.html',
-        controller: 'PublicationDetailsController',
-        controllerAs: CONTROLLER_AS_VM
-      })
       .when('/:section/publications', {
         templateUrl: PARTIALS_PREFIX + 'publications.html',
         controller: 'PublictionsController',

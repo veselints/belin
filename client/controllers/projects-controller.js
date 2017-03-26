@@ -1,18 +1,25 @@
 (function() {
-  'use strict';
+    'use strict';
 
-  var params = {
-  	regional: 'регионалното и местното развитие',
-  	planning: 'пространственото планиране',
-  	regeneration: 'градското възстановяване и развитие'
-  };
+    var params = {
+        development: 'регионалното и местното развитие',
+        planning: 'пространственото планиране',
+        regeneration: 'градското възстановяване и развитие'
+    };
 
-  function ProjectsController($location, $routeParams) {
-    var vm = this;
-    var currentSection = $routeParams.section;
-    vm.section = params[currentSection];
-  }
+    function ProjectsController($location, $routeParams, projectsService) {
+        var vm = this;
+        var currentSection = $routeParams.section;
+        vm.section = params[currentSection];
 
-  angular.module('belinApp.controllers')
-    .controller('ProjectsController', ['$location', '$routeParams', ProjectsController]);
+        projectsService.getProjectsBySection(currentSection)
+            .then(function(res) {
+                vm.projects = res.data;
+            }, function(err) {
+                console.log(err);
+            });
+    }
+
+    angular.module('belinApp.controllers')
+        .controller('ProjectsController', ['$location', '$routeParams', 'projectsService', ProjectsController]);
 }());

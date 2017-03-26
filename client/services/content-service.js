@@ -7,9 +7,7 @@
 
         function create(majorCategory, model) {
             var options = {
-                data: {
-                    model: model
-                },
+                data: model,
                 headers: {
                     'x-auth-key': localStorage.getItem(LOCAL_STORAGE_AUTHKEY_KEY)
                 }

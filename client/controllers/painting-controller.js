@@ -7,7 +7,10 @@
     var id = $routeParams.paintingId;
 
     vm.region = region;
-    vm.painting = paintingsService.getPaintingById(region, id);
+    paintingsService.getPaintingById(id)
+      .then(function(res) {
+        vm.painting = res.data;
+      })
   }
 
   angular.module('belinApp.controllers')

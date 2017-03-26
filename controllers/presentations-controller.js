@@ -46,7 +46,7 @@ let getByArea = function(req, res, next) {
 let create = function(req, res, next) {
     var newPresentation = new Presentation(req.body);
     var authKey = req.headers['x-auth-key'];
-    
+
     User.findOne({
         'authKey': authKey
     }, function(err, user) {
@@ -61,27 +61,19 @@ let create = function(req, res, next) {
             return;
         }
 
-        upload(req, res, function(err) {
+        newPresentation.save(function(err) {
             if (err) {
+                let error = {
+                    message: err.message,
+                    status: 400
+                };
                 next(err);
                 return;
+            } else {
+                res.status(201);
+                res.json(newPresentation);
             }
-            res.status(201);
         });
-    });
-
-    newPresentation.save(function(err) {
-        if (err) {
-            let error = {
-                message: err.message,
-                status: 400
-            };
-            next(err);
-            return;
-        } else {
-            res.status(201);
-            res.json(newPresentation);
-        }
     });
 };
 
