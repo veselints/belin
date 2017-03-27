@@ -6,9 +6,11 @@ let express = require('express'),
 // Defining producers router
 let router = express.Router();
 
-router.post('/users', usersController.post)
-    .put('/auth', usersController.put);
-    
+// router.post('/users', usersController.post)
+//     .put('/auth', usersController.put);
+
+router.put('/auth', usersController.put);
+
 module.exports = function(app) {
     app.use('/api', router);
 };

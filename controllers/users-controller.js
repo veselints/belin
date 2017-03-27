@@ -18,34 +18,34 @@ function generateAuthKey(uniquePart) {
   return authKey;
 }
 
-function post(req, res, next) {
-  let user = req.body;
-  user.username = user.username.toLowerCase();
+// function post(req, res, next) {
+//   let user = req.body;
+//   user.username = user.username.toLowerCase();
 
-  let newUser = new User(user);
-  newUser.save(function(err, user) {
-      if (err) {
-          let error = {
-              message: err.message,
-              status: 400
-          };
-          next(err);
-          return;
-      } else {
-          user.authKey = generateAuthKey(user.username);
-          user.save();
+//   let newUser = new User(user);
+//   newUser.save(function(err, user) {
+//       if (err) {
+//           let error = {
+//               message: err.message,
+//               status: 400
+//           };
+//           next(err);
+//           return;
+//       } else {
+//           user.authKey = generateAuthKey(user.username);
+//           user.save();
 
-          res.status(201);
-          res.json(newUser);
-      }
-  });
-}
+//           res.status(201);
+//           res.json(newUser);
+//       }
+//   });
+// }
 
 function put(req, res, next) {
   let reqUser = req.body;
-
+  console.log(reqUser);
   User.findOne({
-    'username': req.body.username.toLowerCase()
+    'username': req.body.username
   }, function(err, user) {
     if (err) {
       next(err);

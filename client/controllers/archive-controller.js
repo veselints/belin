@@ -10,10 +10,9 @@
     var vm = this;
     var currentSection = $routeParams.section;
     vm.section = params[currentSection];
-    debugger;
+
     archiveService.getArchivesBySection(currentSection)
       .then(function(res){
-        console.log(res);
         vm.archives = res.data;
       }, function(err){
         console.log(err);
