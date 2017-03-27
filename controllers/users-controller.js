@@ -67,7 +67,7 @@ function put(req, res, next) {
 }
 
 let controller = {
-    post,
+    //post,
     put
 };
 
