@@ -12,8 +12,7 @@ let User = mongoose.model('User');
 
 // Connecting to local mongodb
 // let connectionString = 'mongodb://127.0.0.1:27017/belin';
-console.log(process.env.MONGOLAB_URI);
-let connectionString = process.env.MONGOLAB_URI;
+let connectionString = process.env.MONGODB_URI;
 mongoose.connect(connectionString);
 
 // Setting up the server
