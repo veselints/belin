@@ -1,123 +1,54 @@
 (function() {
     'use strict'
 
-    var areaCategories = [
-        'archives',
-        'paintings',
-        'photos',
-        'presentations',
-        'projects',
-        'publications'
-    ];
-
-    var noYearCategories = [
-        'blogposts',
-        'publications'
-    ];
-
-    var professionalAreaOptions = [{
-        value: 'community',
-        text: 'Работа със заинтересованите страни'
-    }, {
-        value: 'development',
-        text: 'Регионално и местно развитие'
-    }, {
-        value: 'planning',
-        text: 'Пространствено планиране'
-    }, {
-        value: 'regeneration',
-        text: 'Градско възстановяване и развитие'
-    }];
-
-    var projectsAreaOptions = [{
-        value: 'development',
-        text: 'Регионално и местно развитие'
-    }, {
-        value: 'planning',
-        text: 'Пространствено планиране'
-    }, {
-        value: 'regeneration',
-        text: 'Градско възстановяване и развитие'
-    }];
-
-    var archiveAreaOptions = [{
-        value: 'development',
-        text: 'Регионално и местно развитие'
-    }, {
-        value: 'planning',
-        text: 'Пространствено планиране'
-    }];
-
-    var photosAreaOptions = [{
-        value: 'dunav',
-        text: 'Край Дунав'
-    }, {
-        value: 'blackSea',
-        text: 'Черно море'
-    }, {
-        value: 'tracia',
-        text: 'Тракия'
-    }, {
-        value: 'balkan',
-        text: 'Балканът'
-    }, {
-        value: 'rilaRodophePirin',
-        text: 'Рила, Родопи, Пирин'
-    }, {
-        value: 'southWestBg',
-        text: 'Югозападна България'
-    }, {
-        value: 'europe',
-        text: 'Европа'
-    }, {
-        value: 'asia',
-        text: 'Азия'
-    }, {
-        value: 'africa',
-        text: 'Африка'
-    }, {
-        value: 'america',
-        text: 'Америка'
-    }, {
-        value: 'collages',
-        text: 'Колажи'
-    }];
-
-    var paintingsAreaOptions = [{
-        value: 'plovdiv',
-        text: 'Пловдив'
-    }, {
-        value: 'monasteries',
-        text: 'Манастири'
-    }, {
-        value: 'ruse',
-        text: 'Русе'
-    }];
-
-    function AdminController($window, $location, usersService, contentService) {
+    function AdminController($firebaseAuth, $firebaseStorage, $firebaseObject, adminOptionsService) {
         var vm = this;
         vm.showAreas = true;
-        vm.areaOptions = paintingsAreaOptions;
+        vm.areaOptions = adminOptionsService.paintingsAreaOptions;
         vm.showDescription = true;
         vm.showYear = true;
         vm.showForPublications = false;
         vm.majorCategory = 'paintings';
-        vm.pass;
         vm.showFile = true;
+        vm.authenticated = false;
 
-        if (!usersService.hasUser()) {
-            $window.alert('No user is logged in!');
-            $location.path('/login');
+        var auth = $firebaseAuth();
+
+        vm.onAuthenticate = function() {
+            if (vm.authEmail && vm.authEmail.length > 5 && vm.authPass && vm.authPass.length > 6) {
+                auth.$signInWithEmailAndPassword(vm.authEmail, vm.authPass).then(function(user) {
+                    if (user) {
+                        alert(user.email + ' signed in!');
+                        vm.authenticated = true;
+                    } else {
+                        user = {};
+                        vm.authenticated = false;
+                    }
+                }).catch(function(error) {
+                    console.log("Authentication failed:", error);
+                });
+            } else {
+                alert('Use valid Email and Password!');
+            }
+        }
+
+        vm.onSignOut = function() {
+            auth.$signOut().then(function() {
+                alert('User signed out!');
+                vm.authenticated = false;
+            }).catch(function(error) {
+                alert(error.message);
+            });
         }
 
         vm.model = {
             area: 'ruse',
-            title: undefined,
-            year: undefined,
-            url: undefined,
-            date: undefined,
-            colaborators: undefined,
-            interviewer: undefined
+            title: null,
+            year: null,
+            url: null,
+            date: null,
+            colaborators: null,
+            interviewer: null
         };
 
         vm.updateMajorSelection = function() {
@@ -126,21 +57,21 @@
             vm.showYear = true;
             vm.showForPublications = false;
 
-            if (areaCategories.indexOf(selectedCategory) > -1) {
+            if (adminOptionsService.areaCategories.indexOf(selectedCategory) > -1) {
                 vm.showAreas = true;
                 vm.showFile = true;
 
                 if (selectedCategory === 'photos') {
-                    vm.areaOptions = photosAreaOptions;
+                    vm.areaOptions = adminOptionsService.photosAreaOptions;
                     vm.showDescription = false;
                 } else if (selectedCategory === 'paintings') {
-                    vm.areaOptions = paintingsAreaOptions;
+                    vm.areaOptions = adminOptionsService.paintingsAreaOptions;
                 } else if (selectedCategory === 'archives') {
-                    vm.areaOptions = archiveAreaOptions;
+                    vm.areaOptions = adminOptionsService.archiveAreaOptions;
                 } else if (selectedCategory === 'projects') {
-                    vm.areaOptions = projectsAreaOptions;
+                    vm.areaOptions = adminOptionsService.projectsAreaOptions;
                 } else {
-                    vm.areaOptions = professionalAreaOptions;
+                    vm.areaOptions = adminOptionsService.professionalAreaOptions;
 
                     if (selectedCategory === 'publications') {
                         vm.showForPublications = true;
@@ -148,7 +79,7 @@
                     }
                 }
             } else {
-                if (noYearCategories.indexOf(selectedCategory) > -1) {
+                if (adminOptionsService.noYearCategories.indexOf(selectedCategory) > -1) {
                     vm.showYear = false;
                 }
 
@@ -160,36 +91,41 @@
         vm.submit = function() {
             if (vm.showFile) {
                 if (vm.form.file.$valid && vm.file) {
-                    upload(vm.file);
+                    var path = vm.majorCategory + '/';
+                    if (vm.showAreas) {
+                        path = path + vm.model.area + '/';
+                    }
+
+                    var storageRef = firebase.storage().ref(path + vm.file.name);
+                    var storage = $firebaseStorage(storageRef);
+                    var uploadTask = storage.$put(vm.file, { contentType: 'image/jpeg' });
+
+                    uploadTask.$complete(function(snapshot) {
+                        //alert(snapshot.downloadURL);
+
+                        var pathToDbRef = vm.majorCategory + '/';
+                        if (vm.showAreas) {
+                            pathToDbRef = pathToDbRef + vm.model.area + '/';
+                        }
+
+                        pathToDbRef += vm.model.title;
+
+                        var dbRef = firebase.database().ref(pathToDbRef);
+                        var newObject = $firebaseObject(dbRef);
+                        angular.extend(newObject, vm.model);
+                        newObject.url = snapshot.downloadURL;
+
+                        newObject.$save().then(function(ref) {
+                            alert(ref.key);
+                        }, function(error) {
+                            console.log("Error:", error);
+                        });
+                    });
                 }
             }
-
-            if (vm.form.$valid) {
-                createContent();
-            }
         }
-
-        var upload = function(file) {
-            vm.model.fileName = vm.majorCategory + '/' + file.name;
-
-            contentService.uploadFile(vm.majorCategory, file)
-                .then(function(res) {
-                    $window.alert('Success ' + res.config.data.file.name + ' uploaded.');
-                }, function(err) {
-                    $window.alert(err.data.message);
-                });
-        };
-
-        var createContent = function() {
-            contentService.create(vm.majorCategory, vm.model)
-                .then(function(res) {
-                    $window.alert('Entry created');
-                }, function(err) {
-                    $window.alert(err.data.message);
-                });
-        };
     }
 
     angular.module('belinApp.controllers')
-        .controller('AdminController', ['$window', '$location', 'usersService', 'contentService', AdminController]);
+        .controller('AdminController', ['$firebaseAuth', '$firebaseStorage', '$firebaseObject', 'adminOptionsService', AdminController]);
 }());

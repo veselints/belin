@@ -1,68 +1,86 @@
-<form name="vm.form">
-    <div class="admin-form-element">
-        <label for="major-category">Изберете основна категория</label>
-        <select name="major-category" required ng-model="vm.majorCategory" ng-change="vm.updateMajorSelection()">
-            <option value="archives">Архиви</option>
-            <option disabled value="blogposts">Актуално</option>
-            <option disabled value="forums">Обществени форуми</option>
-            <option value="paintings">Картини</option>
-            <option value="photos">Снимки</option>
-            <option value="presentations">Презентации</option>
-            <option value="projects">Проекти</option>
-            <option value="publications">Публикации</option>
-            <option disabled value="trainings">Обучения</option>
-        </select>
-    </div>
-    <div ng-show="vm.showAreas" class="admin-form-element">
-        <label for="area">Изберете област</label>
-        <select name="area" ng-model="vm.model.area" ng-required="vm.showAreas">
-            <option ng-repeat="option in vm.areaOptions" value="{{option.value}}">{{option.text}}</option>
-        </select>
-    </div>
-    <div class="admin-form-element">
-        <label for="title">Въведете заглавие</label>
-        <input type="text" name="title" ng-model="vm.model.title" required>
-    </div>
-    <div ng-show="vm.showDescription" class="admin-form-element">
-        <label for="title">Въведете описание</label>
-        <textarea type="text" name="title" ng-model="vm.model.description" ng-required="vm.showDescription" rows="5" cols="50"></textarea>
-    </div>
-    <div ng-show="vm.showYear" class="admin-form-element">
-        <label for="year">Въведете година</label>
-        <input type="number" name="year" min="1940" max="2050" ng-model="vm.model.year" ng-required="vm.showYear">
-    </div>
-    <div ng-show="vm.showForPublications">
+<div>
+    <div ng-hide="vm.authenticated">
         <div class="admin-form-element">
-            <label for="edition">Въведете издание</label>
-            <input type="text" name="edition" ng-model="vm.model.edition" ng-required="vm.showForPublications">
+            <label for="title">Въведете username</label>
+            <input type="text" name="username" ng-model="vm.authEmail" required>
         </div>
         <div class="admin-form-element">
-            <label for="url">Въведете адрес на публикацията</label>
-            <input type="url" name="url" ng-model="vm.model.url" ng-required="vm.showForPublications">
+            <label for="title">Въведете парола</label>
+            <input type="password" name="username" ng-model="vm.authPass" required>
         </div>
         <div class="admin-form-element">
-            <label for="date">Въведете дата на публикацията</label>
-            <input type="date" name="date" ng-model="vm.model.date" ng-required="vm.showForPublications">
+            <input type="button" value="Влез в профила" ng-click="vm.onAuthenticate()">
+        </div>
+    </div>
+    <div class="admin-form-element" ng-show="vm.authenticated">
+        <input type="button" value="Излез от профила" ng-click="vm.onSignOut()">
+    </div>
+    <form name="vm.form" ng-show="vm.authenticated">
+        <div class="admin-form-element">
+            <label for="major-category">Изберете основна категория</label>
+            <select name="major-category" required ng-model="vm.majorCategory" ng-change="vm.updateMajorSelection()">
+                <option value="archives">Архиви</option>
+                <option disabled value="blogposts">Актуално</option>
+                <option disabled value="forums">Обществени форуми</option>
+                <option value="paintings">Картини</option>
+                <option value="photos">Снимки</option>
+                <option value="presentations">Презентации</option>
+                <option value="projects">Проекти</option>
+                <option value="publications">Публикации</option>
+                <option disabled value="trainings">Обучения</option>
+            </select>
+        </div>
+        <div ng-show="vm.showAreas" class="admin-form-element">
+            <label for="area">Изберете област</label>
+            <select name="area" ng-model="vm.model.area" ng-required="vm.showAreas">
+                <option ng-repeat="option in vm.areaOptions" value="{{option.value}}">{{option.text}}</option>
+            </select>
         </div>
         <div class="admin-form-element">
-            <label for="colaborators">Въведете сътрудници (в случай, че е имало)</label>
-            <input type="text" name="colaborators" ng-model="vm.model.colaborators">
+            <label for="title">Въведете заглавие</label>
+            <input type="text" name="title" ng-model="vm.model.title" required>
+        </div>
+        <div ng-show="vm.showDescription" class="admin-form-element">
+            <label for="title">Въведете описание</label>
+            <textarea type="text" name="title" ng-model="vm.model.description" ng-required="vm.showDescription" rows="5" cols="50"></textarea>
+        </div>
+        <div ng-show="vm.showYear" class="admin-form-element">
+            <label for="year">Въведете година</label>
+            <input type="number" name="year" min="1940" max="2050" ng-model="vm.model.year" ng-required="vm.showYear">
+        </div>
+        <div ng-show="vm.showForPublications">
+            <div class="admin-form-element">
+                <label for="edition">Въведете издание</label>
+                <input type="text" name="edition" ng-model="vm.model.edition" ng-required="vm.showForPublications">
+            </div>
+            <div class="admin-form-element">
+                <label for="url">Въведете адрес на публикацията</label>
+                <input type="url" name="url" ng-model="vm.model.url" ng-required="vm.showForPublications">
+            </div>
+            <div class="admin-form-element">
+                <label for="date">Въведете дата на публикацията</label>
+                <input type="date" name="date" ng-model="vm.model.date" ng-required="vm.showForPublications">
+            </div>
+            <div class="admin-form-element">
+                <label for="colaborators">Въведете сътрудници (в случай, че е имало)</label>
+                <input type="text" name="colaborators" ng-model="vm.model.colaborators">
+            </div>
+            <div class="admin-form-element">
+                <label for="interviewer">Въведете интервюиращ (в случай, че е имало)</label>
+                <input type="text" name="interviewer" ng-model="vm.model.interviewer">
+            </div>
+        </div>
+        <div class="admin-form-element" ng-show="vm.showFile">
+            <label for="file">Изберете файл</label>
+            <div class="file-container">
+                <input type="file" ngf-select ng-model="vm.file" name="file" ngf-max-size="3MB" ng-required="vm.showFile == true" />
+                <p>Преглед на картинката:</p>
+                <img style="width:100px;" ngf-thumbnail="vm.file" />
+                <i ng-show="vm.form.file.$error.maxSize">Файлът е прекалено голям (мах 3MB)</i>
+            </div>
         </div>
         <div class="admin-form-element">
-            <label for="interviewer">Въведете интервюиращ (в случай, че е имало)</label>
-            <input type="text" name="interviewer" ng-model="vm.model.interviewer">
+            <input type="submit" value="Запазете информацията" ng-click="vm.submit()">
         </div>
-    </div>
-     <div class="admin-form-element" ng-show="vm.showFile">
-        <label for="file">Изберете файл</label>
-        <div class="file-container">
-            <input type="file" ngf-select ng-model="vm.file" name="file" ngf-max-size="3MB" ng-required="vm.showFile == true" />
-            <p>Преглед на картинката:</p>
-            <img style="width:100px;" ngf-thumbnail="vm.file" />
-            <i ng-show="vm.form.file.$error.maxSize">Файлът е прекалено голям (мах 3MB)</i>
-        </div>
-    </div>
-    <div class="admin-form-element">
-        <input type="submit" value="Запазете информацията" ng-click="vm.submit()">
-    </div>
-</form>
+    </form>
+</div>

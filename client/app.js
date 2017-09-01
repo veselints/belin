@@ -17,16 +17,6 @@
         controller: 'AboutController',
         controllerAs: CONTROLLER_AS_VM
       })
-      .when('/login', {
-        templateUrl: PARTIALS_PREFIX + 'login.html',
-        controller: 'LoginController',
-        controllerAs: CONTROLLER_AS_VM
-      })
-      .when('/register', {
-        templateUrl: PARTIALS_PREFIX + 'login.html',
-        controller: 'RegisterController',
-        controllerAs: CONTROLLER_AS_VM
-      })
       .when('/admin', {
         templateUrl: PARTIALS_PREFIX + 'admin.html',
         controller: 'AdminController',
@@ -114,7 +104,7 @@
   angular.module('belinApp.services', []);
   angular.module('belinApp.controllers', ['belinApp.services']);
 
-  angular.module('belinApp', ['ngRoute', 'belinApp.controllers', 'ngFileUpload']) //
+  angular.module('belinApp', ['ngRoute', 'belinApp.controllers', 'ngFileUpload', 'firebase']) //
     .config(['$routeProvider', config])
     .constant('baseServiceUrl', 'https://fast-badlands-79260.herokuapp.com/api/'); // Chage this when you migrate to heroku
 }());

@@ -140,21 +140,24 @@
             <a class="link" href="https://github.com/veselints" "Veselin Tsvetanov">&copy; veselints</a>
         </p>
     </footer>
-    <!-- Loding libs -->
+    <!-- Loding jQuery -->
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <!-- Loding Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.js"></script>
-    <script type="text/javascript" src="../node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
-    <script type="text/javascript" src="../node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js"></script>
-
-    <script type="text/javascript" src="../node_modules/crypto-js/core.js"></script>
-    <script type="text/javascript" src="../node_modules/crypto-js/hmac-sha1.js"></script>
-    <script type="text/javascript" src="../node_modules/crypto-js/sha1.js"></script>
+    <!-- Loding Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+    <!-- Loading AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    <!-- Remove the below!!!!!!! -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload-shim.min.js"></script>
     <!-- Loading app -->
     <script src="app.js"></script>
     <!-- Loading services -->
     <script src="services/data-service.js"></script>
+    <script src="services/admin-options-service.js"></script>
     <script src="services/users-service.js"></script>
     <script src="services/content-service.js"></script>
     <script src="services/paintings-service.js"></script>
@@ -163,13 +166,10 @@
     <script src="services/photos-service.js"></script>
     <script src="services/projects-service.js"></script>
     <script src="services/presentations-service.js"></script>
-    <!-- <script src="services/data-service.js"></script> -->
     <!-- Loading directives -->
     <!-- <script src="directives/upload-directive.js"></script> -->
     <!-- Loading controllers -->
     <script src="controllers/home-controller.js"></script>
-    <script src="controllers/login-controller.js"></script>
-    <script src="controllers/register-controller.js"></script>
     <script src="controllers/admin-controller.js"></script>
     <script src="controllers/about-controller.js"></script>
     <script src="controllers/presentations-controller.js"></script>
@@ -187,6 +187,17 @@
     <script src="controllers/painting-controller.js"></script>
     <script type="text/javascript">
     $('document').ready(function() {
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAvymOjJfqbRtqaSR1ZVobRYJEVQa-b2FQ",
+            authDomain: "belin-test.firebaseapp.com",
+            databaseURL: "https://belin-test.firebaseio.com",
+            projectId: "belin-test",
+            storageBucket: "gs://belin-test.appspot.com",
+            messagingSenderId: "413225889145"
+        };
+        firebase.initializeApp(config);
+
         $('.main-link').on('click', function(e) {
             $('.visible-dropdown').removeClass('visible-dropdown').addClass('hidden-dropdown');
             $('.fa-caret-up').removeClass('fa-caret-up').addClass('fa-caret-down');
